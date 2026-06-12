@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow K Shop — Shop Korean Beauty Masks & Serums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF6EF;--paper:#fff;--green:#2E4733;--green-deep:#21341E;--ink:#23271F;--gold:#B88E3C;--pink:#D98FA0;--pink-soft:#F3D6DC;--muted:#6F6A5B;--line:#E7DCC8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+  h1,h2,h3,.disp{font-family:'Archivo',sans-serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+  .promo{background:var(--green);color:#F3EEDF;overflow:hidden;border-bottom:1px solid var(--green-deep)}
+  .promo .t{display:flex;gap:50px;white-space:nowrap;animation:mv 28s linear infinite;padding:9px 0;font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  .promo .t b{color:var(--gold)}
+  @keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  header{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1240px;margin:0 auto}
+  .logo{font-family:'Archivo';font-weight:900;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:1px} .logo .logoimg{height:34px;width:auto;display:block} .logo .wordmark{display:inline-flex;align-items:center;gap:1px}
+  .logo .g,.logo .s{color:var(--green)} .logo .k{color:var(--pink);position:relative;padding:0 1px}
+  .logo .leaf{width:11px;height:11px;position:absolute;top:0;left:50%;transform:translateX(-50%)}
+  nav.links{display:flex;gap:28px;font-family:'Archivo';font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  nav.links a{color:var(--ink);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.links a:hover,nav.links a.active{border-color:var(--gold);color:var(--green)}
+  .tools{display:flex;align-items:center;gap:16px}
+  .tools svg{width:19px;height:19px;color:var(--ink);cursor:pointer}
+  .cart{display:flex;align-items:center;gap:6px;font-family:'Archivo';font-weight:700;font-size:.78rem;cursor:pointer}
+
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:0;min-height:420px;border-bottom:1px solid var(--line)}
+  .hero .left{background:var(--green);color:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:54px 50px}
+  .hero .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .hero h1{font-weight:900;font-size:clamp(2.3rem,4.2vw,3.6rem);line-height:.98;letter-spacing:-.02em;text-transform:uppercase}
+  .hero h1 em{font-style:normal;color:var(--pink)}
+  .hero p{margin:18px 0 26px;font-size:1rem;color:#D9D2C2;max-width:38ch}
+  .hero .right{position:relative;background:linear-gradient(150deg,var(--pink-soft),#DDE4D3);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hero .right img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .hero .right .ph{font-family:'Archivo';font-weight:800;color:var(--green);text-align:center;letter-spacing:.04em;padding:20px}
+  .hero .right .ph small{display:block;font-family:'Hanken Grotesk';font-weight:600;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);opacity:.7;margin-top:8px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#231C0A;padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--gold);transition:.2s;cursor:pointer;width:fit-content}
+  .btn:hover{background:transparent;color:var(--cream);border-color:var(--cream)}
+  .btn.dark{background:var(--green);border-color:var(--green);color:var(--cream)}
+  .btn.dark:hover{background:transparent;color:var(--green)}
+
+  .strip{background:var(--green-deep);color:#EFE9DA}
+  .strip .in{display:grid;grid-template-columns:repeat(4,1fr);max-width:1240px;margin:0 auto}
+  .strip .it{padding:16px 18px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+  .strip .it:last-child{border-right:none}
+  .strip .it b{font-family:'Archivo';font-weight:800;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;display:block;color:#fff}
+  .strip .it span{font-size:.72rem;color:#BDB6A4}
+
+  .shop{padding:46px 0 20px}
+  .shead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+  .shead h2{font-weight:900;font-size:1.9rem;letter-spacing:-.01em;text-transform:uppercase;color:var(--green)}
+  .shead .count{font-size:.8rem;color:var(--muted);font-weight:600}
+  .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
+  .filters button{font-family:'Archivo';font-weight:700;background:transparent;border:1.5px solid var(--line);color:var(--muted);padding:9px 18px;border-radius:4px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.2s}
+  .filters button:hover{border-color:var(--green);color:var(--green)}
+  .filters button.active{background:var(--green);border-color:var(--green);color:var(--cream)}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .card:hover{box-shadow:0 14px 30px -20px rgba(46,71,51,.5);transform:translateY(-3px)}
+  .card .imgwrap{position:relative;aspect-ratio:1/1;background:linear-gradient(155deg,#EFE7D6,#E3DAC6)}
+  .card.cream .imgwrap{background:linear-gradient(155deg,#F4E6CC,#ECDBB9)}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+  .card .ph2{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-family:'Archivo';font-weight:800;font-size:.92rem;color:var(--green);text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+  .card .badge{position:absolute;top:9px;left:9px;z-index:3;background:var(--gold);color:#231C0A;font-family:'Archivo';font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:4px 8px;border-radius:3px}
+  .card .body{padding:12px 13px 14px;display:flex;flex-direction:column;flex:1}
+  .card .body h3{font-family:'Hanken Grotesk';font-size:.92rem;font-weight:700;line-height:1.2;color:var(--ink)}
+  .card .tag{font-size:.74rem;color:var(--muted);margin:4px 0 11px;flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card .price{font-family:'Archivo';font-weight:800;font-size:1rem;color:var(--green)}
+  .card .add{font-family:'Archivo';font-weight:700;background:var(--green);border:none;color:var(--cream);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 13px;border-radius:4px;cursor:pointer;transition:.2s}
+  .card .add:hover{background:var(--gold);color:#231C0A}
+
+  .aboutcta{margin:48px 0 10px;background:var(--green);color:var(--cream);border-radius:10px;padding:42px 36px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+  .aboutcta h2{font-weight:900;font-size:1.7rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:10px}
+  .aboutcta p{color:#D9D2C2;font-size:.96rem;max-width:46ch}
+  .aboutcta .r{text-align:right}
+  @media(max-width:760px){.aboutcta{grid-template-columns:1fr}.aboutcta .r{text-align:left}}
+
+  .news{padding:46px 0;text-align:center}
+  .news h3{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+  .news .form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .news input{font-family:'Hanken Grotesk';border:1.5px solid var(--green-soft,#9aa893);background:#fff;border:1.5px solid var(--line);padding:12px 16px;border-radius:4px;font-size:.9rem;min-width:240px}
+  .news input:focus{outline:none;border-color:var(--green)}
+
+  footer{background:var(--green-deep);color:#D9D2C2}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px;padding:44px 0 24px}
+  .foot .logo{font-size:1.3rem;margin-bottom:10px}
+  .foot .logo .g,.foot .logo .s{color:#fff} .foot .logo .k{color:var(--pink)}
+  .foot p{font-size:.82rem;color:#B7B0A0;max-width:32ch}
+  .foot h5{font-family:'Archivo';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:800;margin-bottom:12px}
+  .foot ul{list-style:none} .foot li{margin-bottom:8px;font-size:.84rem;color:#B7B0A0}
+  .foot li a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.74rem;color:#9b9484}
+
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(110px);background:var(--green);color:var(--cream);padding:12px 22px;border-radius:5px;font-family:'Archivo';font-weight:700;font-size:.78rem;letter-spacing:.04em;z-index:1000;transition:transform .35s;box-shadow:0 14px 30px -16px rgba(0,0,0,.4)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:860px){.hero{grid-template-columns:1fr}.hero .right{min-height:240px}.strip .in{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}nav.links{display:none}}
+</style>
+</head>
+<body>
+
+<div class="promo"><div class="t" id="promo"></div></div>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Glow K Shop" class="logoimg" onload="if(this.nextElementSibling)this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"><span class="wordmark"><span class="g">GLOW</span><span class="k"><svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 6 4 10 4 15a8 8 0 0016 0c0-5-3-9-8-13z" fill="#D98FA0"/></svg>K</span><span class="s">SHOP</span></span></a>
+    <nav class="links"><a href="index.html" class="active">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <div class="tools">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <div class="cart" onclick="toast('Your bag is ready when you are')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg><span id="cc">0</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="left">
+    <div class="eyebrow">Korean Beauty · Natural Botanicals</div>
+    <h1>Glow like <em>never</em> before</h1>
+    <p>K-beauty masks and serums made with natural ingredients — for soft, dewy, glass-skin glow.</p>
+    <a href="#shop" class="btn">Shop All</a>
+  </div>
+  <div class="right">
+    <img src="images/hero.png" alt="" onerror="this.style.display='none'">
+    <div class="ph">GLOW K SHOP<small>Hero photo · images/hero.png</small></div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="in">
+    <div class="it"><b>Free Shipping</b><span>On every order</span></div>
+    <div class="it"><b>Korean-Inspired</b><span>K-beauty rituals</span></div>
+    <div class="it"><b>Natural</b><span>No harsh chemicals</span></div>
+    <div class="it"><b>Glass-Skin Glow</b><span>Soft, dewy, lit-from-within</span></div>
+  </div>
+</div>
+
+<section class="wrap shop" id="shop">
+  <div class="shead">
+    <h2>Shop All</h2>
+    
+  </div>
+  <div class="filters">
+    <button class="active" data-f="all">All</button>
+    <button data-f="bright">Brightening</button>
+    <button data-f="hydrate">Hydrating</button>
+    <button data-f="soothe">Soothing &amp; Calm</button>
+    <button data-f="firm">Firm &amp; Renew</button>
+    <button data-f="wake">Wake-Up</button>
+    <button data-f="hair">Hair Removal</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="wrap">
+  <div class="aboutcta">
+    <div>
+      <h2>Skincare that works with your skin</h2>
+      <p>Glow K Shop is built on Korean beauty philosophy — natural ingredients that nourish and heal, never strip. Just functional botanicals that help your skin glow with its own youth.</p>
+    </div>
+    <div class="r"><a href="about.html" class="btn">Our Story</a></div>
+  </div>
+</section>
+
+<section class="wrap news">
+  <h3>Join the glow list</h3>
+  <div class="form"><input type="email" placeholder="your@email.com"><button class="btn dark" onclick="toast('Welcome to the glow')">Subscribe</button></div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div><div class="logo disp" style="font-weight:900"><span class="g">GLOW</span><span class="k">K</span><span class="s">SHOP</span></div><p>Korean beauty masks &amp; serums made with natural botanicals. Free shipping on every order.</p></div>
+    <div><h5>Shop</h5><ul><li><a href="index.html">All Products</a></li><li><a href="index.html">Masks</a></li><li><a href="index.html">Serums &amp; Creams</a></li></ul></div>
+    <div><h5>About</h5><ul><li><a href="about.html">Our Glow</a></li><li><a href="about.html">How to Use</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li><li><a href="contact.html">FAQ</a></li></ul></div>
+  </div>
+  <div class="wrap foot-bottom"><span>© 2026 Glow K Shop · glowkshop.com</span><span>Free shipping on all orders</span></div>
+</footer>
+
+<div class="toast" id="t"></div>
+
+<script>
+  const products=[
+    {name:"Golden Smooth Hair Removal Cream",cat:"cream",con:["hair"],tag:"24K gold, gentle hair removal",gold:1},
+    {name:"24K Gold Healing Glow Serum",cat:"cream",con:["firm","bright"],tag:"Gold + hyaluronic acid glow",gold:1},
+    {name:"Yeast Collagen Firming Peel",cat:"cream",con:["firm"],tag:"Peel-off firming, egg-smooth skin"},
+    {name:"Golden Firm & Lift Serum",cat:"cream",con:["firm"],tag:"Gold + collagen, bounce-back skin",gold:1},
+    {name:"Blueberry Dew",cat:"mask",con:["hydrate"],tag:"Antioxidant berry hydration"},
+    {name:"Shea Butter Glow",cat:"mask",con:["hydrate"],tag:"Rich nourishing moisture"},
+    {name:"Orange Vitamin C Radiance",cat:"mask",con:["bright","wake"],tag:"Vitamin C brightening"},
+    {name:"Strawberry Quench",cat:"mask",con:["hydrate"],tag:"Juicy moisture boost"},
+    {name:"Apple Hydra Fresh",cat:"mask",con:["hydrate"],tag:"Crisp hydration refresh"},
+    {name:"Tea Tree Fresh Radiance",cat:"mask",con:["soothe"],tag:"Clarifying tea tree"},
+    {name:"Mango Nourish",cat:"mask",con:["hydrate"],tag:"Tropical nourishing glow"},
+    {name:"Aloe Hydrate & Soothe",cat:"mask",con:["hydrate","soothe"],tag:"Cooling aloe calm"},
+    {name:"Cactus Hydra Plump",cat:"mask",con:["hydrate"],tag:"Desert-deep plumping hydration"},
+    {name:"Cherry Antioxidant Glow",cat:"mask",con:["bright"],tag:"Antioxidant cherry glow"},
+    {name:"Lemon Vitality Glow",cat:"mask",con:["bright","wake"],tag:"Bright, energizing glow"},
+    {name:"Oat Silk",cat:"mask",con:["soothe"],tag:"Soothing, silky oat comfort"},
+    {name:"Green Nutrient Glow",cat:"mask",con:["bright"],tag:"Green veggie nutrients"},
+    {name:"Hyaluronic Acid Deep Hydration",cat:"mask",con:["hydrate"],tag:"Deep HA moisture, bouncy skin"},
+    {name:"Snail Mucin Repair",cat:"mask",con:["firm","hydrate"],tag:"Snail mucin repair + bounce"},
+    {name:"Honey Restore",cat:"mask",con:["hydrate","soothe"],tag:"Honey moisture restore"},
+    {name:"Coffee Wake-Up Glow",cat:"mask",con:["wake"],tag:"Caffeine wake-up glow"},
+    {name:"Kiwi Antioxidant Boost",cat:"mask",con:["bright","wake"],tag:"Vitamin-rich kiwi boost"},
+    {name:"Cyan Lemon \u2013 Refresh & Brighten",cat:"mask",con:["bright","wake"],tag:"Citrus refresh + brighten"},
+    {name:"Tomato \u2013 Bright and Even",cat:"mask",con:["bright"],tag:"Brightening, even tone"},
+    {name:"Grape \u2013 Firm & Bright",cat:"mask",con:["bright","firm"],tag:"Antioxidant firm + bright"},
+    {name:"Pomegranate \u2013 Antioxidant Glow",cat:"mask",con:["bright"],tag:"Pomegranate antioxidant glow"},
+    {name:"Golden Renewal Ritual",cat:"mask",con:["firm","hydrate"],tag:"24K gold + HA renewal ritual",gold:1},
+    {name:"Goat Milk \u2013 Smooth & Bright",cat:"mask",con:["bright"],tag:"Lactic-acid smooth + bright"},
+    {name:"Chamomile \u2013 Calm & Soothe",cat:"mask",con:["soothe"],tag:"Calming chamomile"},
+    {name:"Carrot \u2013 Nourish & Glow",cat:"mask",con:["bright"],tag:"Beta-carotene nourish + glow"},
+    {name:"Bamboo \u2013 Hydrate & Bounce",cat:"mask",con:["hydrate"],tag:"Silica hydrate + bounce"},
+    {name:"Cucumber \u2013 Cool & Hydrate",cat:"mask",con:["hydrate","soothe"],tag:"Cooling cucumber hydration"},
+    {name:"Rose \u2013 Dewy Glow",cat:"mask",con:["hydrate"],tag:"Rose dewy glow"},
+    {name:"Avocado \u2013 Vitamin E Glow",cat:"mask",con:["hydrate"],tag:"Vitamin E nourishing glow"},
+    {name:"Green Tea \u2013 Smooth & Soothe",cat:"mask",con:["soothe"],tag:"Antioxidant green tea calm"},
+    {name:"Pink Peach \u2013 Soft Glow",cat:"mask",con:["hydrate"],tag:"Peachy soft glow"},
+    {name:"Coconut \u2013 Deep Hydrate, Smooth & Soften",cat:"mask",con:["hydrate"],tag:"Coconut deep hydration"},
+    {name:"Lavender \u2013 Calm & Hydrate",cat:"mask",con:["soothe","hydrate"],tag:"Calming lavender hydration"},
+  ];
+  const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const grid=document.getElementById('grid');
+  let cart=0;
+  function render(f){
+    grid.innerHTML='';
+    const list=products.filter(p=>f==='all'||(p.con&&p.con.includes(f)));
+    
+    list.forEach(p=>{
+      const price=p.cat==='cream'?'12':'8', sg=slug(p.name);
+      const c=document.createElement('div'); c.className='card '+p.cat;
+      c.innerHTML=`<div class="imgwrap">${p.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="ph2">${p.name}</div></div>
+      <div class="body"><h3>${p.name}</h3><div class="tag">${p.tag}</div><div class="row"><span class="price">$${price}</span><button class="add">Add</button></div></div>`;
+      c.querySelector('.add').addEventListener('click',()=>{cart++;document.getElementById('cc').textContent=cart;toast('Added · '+p.name);});
+      grid.appendChild(c);
+    });
+  }
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); render(b.dataset.f);
+  }));
+  render('all');
+  let tm; function toast(m){const e=document.getElementById('t');e.textContent=m;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),2000);}
+  const pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
+  document.getElementById('promo').innerHTML='<span>'+pr+pr+'</span><span>'+pr+pr+'</span>';
+</script>
+</body>
+</html>

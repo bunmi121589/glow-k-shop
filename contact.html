@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Glow K Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF6EF;--paper:#fff;--green:#2E4733;--green-deep:#21341E;--ink:#23271F;--gold:#B88E3C;--pink:#D98FA0;--pink-soft:#F3D6DC;--muted:#6F6A5B;--line:#E7DCC8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+  h1,h2,h3,h4,.disp{font-family:'Archivo',sans-serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .promo{background:var(--green);color:#F3EEDF;overflow:hidden;border-bottom:1px solid var(--green-deep)}
+  .promo .t{display:flex;gap:50px;white-space:nowrap;animation:mv 28s linear infinite;padding:9px 0;font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  @keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  header{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1240px;margin:0 auto}
+  .logo{font-family:'Archivo';font-weight:900;font-size:1.35rem;display:flex;align-items:center;gap:1px} .logo .logoimg{height:34px;width:auto;display:block} .logo .wordmark{display:inline-flex;align-items:center;gap:1px}
+  .logo .g,.logo .s{color:var(--green)} .logo .k{color:var(--pink);position:relative;padding:0 1px}
+  .logo .leaf{width:11px;height:11px;position:absolute;top:0;left:50%;transform:translateX(-50%)}
+  nav.links{display:flex;gap:28px;font-family:'Archivo';font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  nav.links a{color:var(--ink);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.links a:hover,nav.links a.active{border-color:var(--gold);color:var(--green)}
+  .tools{display:flex;align-items:center;gap:16px}
+  .tools svg{width:19px;height:19px;color:var(--ink);cursor:pointer}
+  .cart{display:flex;align-items:center;gap:6px;font-family:'Archivo';font-weight:700;font-size:.78rem;cursor:pointer}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--cream);padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--green);transition:.2s;cursor:pointer;width:fit-content}
+  .btn:hover{background:transparent;color:var(--green)}
+  .phero{background:var(--green);color:var(--cream);text-align:center;padding:62px 24px}
+  .phero .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .phero h1{font-weight:900;font-size:clamp(2.2rem,4.2vw,3.5rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+  .phero p{color:#D9D2C2;max-width:50ch;margin:16px auto 0;font-size:1rem}
+  .cgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;padding:54px 0}
+  .cinfo h2{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:18px;letter-spacing:-.01em}
+  .citem{margin-bottom:20px}
+  .citem .lbl{font-family:'Archivo';font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .citem a,.citem p{color:var(--ink);font-size:.96rem} .citem a:hover{color:var(--green)}
+  .socials{display:flex;gap:10px;margin-top:6px}
+  .socials a{width:36px;height:36px;border:1.5px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--green);transition:.2s}
+  .socials a:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
+  .socials svg{width:17px;height:17px}
+  .cform{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:28px}
+  .cform h2{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:16px;letter-spacing:-.01em}
+  .field{margin-bottom:14px}
+  .field label{font-family:'Archivo';font-weight:700;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .field input,.field textarea{width:100%;font-family:'Hanken Grotesk';font-size:.92rem;border:1.5px solid var(--line);border-radius:6px;padding:11px 13px;background:var(--cream)}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--green)}
+  .field textarea{min-height:120px;resize:vertical}
+  .faq{padding:14px 0 20px}
+  .faq .qa{border-top:1px solid var(--line);padding:18px 0}
+  .faq .qa h4{font-weight:800;text-transform:uppercase;font-size:.92rem;color:var(--green);margin-bottom:6px}
+  .faq .qa p{color:var(--muted);font-size:.92rem;max-width:70ch}
+  .sec-head{text-align:center;margin:40px 0 10px}
+  .sec-head .eyebrow{font-family:'Archivo';font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .sec-head h2{font-weight:900;font-size:1.8rem;text-transform:uppercase;color:var(--green);margin-top:6px}
+  footer{background:var(--green-deep);color:#D9D2C2;margin-top:20px}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px;padding:44px 0 24px}
+  .foot .logo{font-size:1.3rem;margin-bottom:10px} .foot .logo .g,.foot .logo .s{color:#fff} .foot .logo .k{color:var(--pink)}
+  .foot p{font-size:.82rem;color:#B7B0A0;max-width:32ch}
+  .foot h5{font-family:'Archivo';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:800;margin-bottom:12px}
+  .foot ul{list-style:none} .foot li{margin-bottom:8px;font-size:.84rem;color:#B7B0A0} .foot li a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.74rem;color:#9b9484}
+  @media(max-width:860px){.cgrid{grid-template-columns:1fr;gap:28px}.foot{grid-template-columns:1fr 1fr}nav.links{display:none}}
+</style>
+</head>
+<body>
+<div class="promo"><div class="t" id="promo"></div></div>
+<header><div class="nav">
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Glow K Shop" class="logoimg" onload="if(this.nextElementSibling)this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"><span class="wordmark"><span class="g">GLOW</span><span class="k"><svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 6 4 10 4 15a8 8 0 0016 0c0-5-3-9-8-13z" fill="#D98FA0"/></svg>K</span><span class="s">SHOP</span></span></a>
+  <nav class="links"><a href="index.html">Shop</a><a href="about.html">About</a><a href="contact.html" class="active">Contact</a></nav>
+  <div class="tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><a href="index.html" class="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg><span>0</span></a></div>
+</div></header>
+
+<section class="phero">
+  <div class="eyebrow">Get In Touch</div>
+  <h1>Let's connect</h1>
+  <p>Questions about an order, an ingredient, or just want to say hi? We'd love to hear from you.</p>
+</section>
+
+<section class="wrap cgrid">
+  <div class="cinfo">
+    <h2>Reach Us</h2>
+    <div class="citem"><div class="lbl">Email</div><a href="mailto:hello@glowkshop.com">hello@glowkshop.com</a></div>
+    <div class="citem"><div class="lbl">Response Time</div><p>We reply within 1–2 business days.</p></div>
+    <div class="citem"><div class="lbl">Shipping</div><p>Free on every order, everywhere.</p></div>
+    <div class="citem"><div class="lbl">Follow</div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2 1.6 3.6 3.7 3.9V9c-1.4 0-2.7-.4-3.7-1.1V15a5 5 0 11-5-5c.2 0 .4 0 .6.1v2.2a2.8 2.8 0 102 2.7V3h2.4z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2 0-3.3 1.4-3.3 3 0 .8.4 1.6 1 1.9.1 0 .2 0 .2-.2l.2-.7c0-.1 0-.2-.1-.3-.3-.3-.4-.7-.4-1.2 0-1.4 1-2.5 2.6-2.5 1.4 0 2.2.9 2.2 2 0 1.6-.7 2.9-1.7 2.9-.6 0-1-.5-.9-1.1l.4-1.7c.1-.4-.1-.8-.5-.8-.6 0-1 .6-1 1.4 0 .5.2.8.2.8l-.7 2.9c-.2.9 0 2 0 2.1 0 .1.1.1.2.1.1-.1.7-.9.9-1.7l.4-1.4c.2.4.8.7 1.4.7 1.9 0 3.2-1.7 3.2-4 0-1.7-1.5-3.3-3.7-3.3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="cform">
+    <h2>Send a Message</h2>
+    <div class="field"><label>Name</label><input id="fn" type="text" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input id="fe" type="email" placeholder="your@email.com"></div>
+    <div class="field"><label>Message</label><textarea id="fm" placeholder="How can we help?"></textarea></div>
+    <button class="btn" onclick="send()">Send Message</button>
+    <p style="font-size:.74rem;color:var(--muted);margin-top:10px">This opens your email app to send to hello@glowkshop.com.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head"><div class="eyebrow">Help</div><h2>FAQ</h2></div>
+  <div class="faq">
+    <div class="qa"><h4>How much is shipping?</h4><p>Shipping is free on every order — no minimums, no surprises at checkout.</p></div>
+    <div class="qa"><h4>How long does delivery take?</h4><p>Orders are processed within 1–2 business days, and most arrive within standard domestic shipping windows once dispatched.</p></div>
+    <div class="qa"><h4>What's your return policy?</h4><p>If something isn't right, email us within 14 days of delivery and we'll make it right.</p></div>
+    <div class="qa"><h4>Are the products natural?</h4><p>Our formulas lean on natural botanicals with no harsh chemicals — gentle, nourishing K-beauty designed to help skin glow.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap foot">
+  <div><div class="logo disp" style="font-weight:900"><span class="g">GLOW</span><span class="k">K</span><span class="s">SHOP</span></div><p>Korean beauty masks &amp; serums made with natural botanicals. Free shipping on every order.</p></div>
+  <div><h5>Shop</h5><ul><li><a href="index.html">All Products</a></li><li><a href="index.html">Masks</a></li><li><a href="index.html">Serums &amp; Creams</a></li></ul></div>
+  <div><h5>About</h5><ul><li><a href="about.html">Our Glow</a></li><li><a href="about.html">How to Use</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div><h5>Help</h5><ul><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li><li><a href="contact.html">FAQ</a></li></ul></div>
+</div><div class="wrap foot-bottom"><span>© 2026 Glow K Shop · glowkshop.com</span><span>Free shipping on all orders</span></div></footer>
+<script>
+  function send(){
+    var n=document.getElementById('fn').value,e=document.getElementById('fe').value,m=document.getElementById('fm').value;
+    if(!n||!e||!m){alert('Please fill in your name, email, and message.');return;}
+    var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\n'+m);
+    window.location.href='mailto:hello@glowkshop.com?subject='+encodeURIComponent('Glow K Shop — message from '+n)+'&body='+body;
+  }
+  var pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
+  document.getElementById('promo').innerHTML='<span>'+pr+pr+'</span><span>'+pr+pr+'</span>';
+</script>
+</body>
+</html>
