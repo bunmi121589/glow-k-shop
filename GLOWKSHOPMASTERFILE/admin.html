@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow K Shop — Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF6EF;--paper:#fff;--green:#2E4733;--green-deep:#21341E;--ink:#23271F;--gold:#B88E3C;--pink:#D98FA0;--muted:#6F6A5B;--line:#E7DCC8;--warn:#C2562F}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.5}
+  h1,h2,h3,h4,.disp{font-family:'Archivo',sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  /* gate */
+  .gate{position:fixed;inset:0;background:var(--green);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .gate .box{background:var(--cream);border-radius:12px;padding:38px 34px;width:360px;max-width:100%;text-align:center}
+  .gate .logo{font-family:'Archivo';font-weight:900;font-size:1.5rem}
+  .gate .logo .g,.gate .logo .s{color:var(--green)} .gate .logo .k{color:var(--pink)}
+  .gate p{color:var(--muted);font-size:.86rem;margin:6px 0 18px}
+  .gate input{width:100%;font-family:'Hanken Grotesk';border:1.5px solid var(--line);border-radius:6px;padding:12px 14px;font-size:1rem;text-align:center;letter-spacing:.1em}
+  .gate input:focus{outline:none;border-color:var(--green)}
+  .gate button{margin-top:12px;width:100%;background:var(--green);color:var(--cream);border:none;border-radius:6px;padding:12px;font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;cursor:pointer}
+  .gate .err{color:var(--warn);font-size:.8rem;margin-top:10px;min-height:1em}
+  /* header */
+  .top{background:var(--green-deep);color:var(--cream);padding:18px 0}
+  .top .in{display:flex;align-items:center;justify-content:space-between}
+  .top .logo{font-family:'Archivo';font-weight:900;font-size:1.2rem;color:#fff} .top .logo .k{color:var(--pink)} .top .logo small{display:block;font-size:.6rem;letter-spacing:.2em;color:var(--gold);font-weight:700;text-transform:uppercase}
+  .top a{color:#CFC8B8;font-size:.78rem;text-decoration:none;font-family:'Archivo';font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:22px 0 0}
+  .tabs button{font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;background:none;border:none;padding:12px 18px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent}
+  .tabs button.on{color:var(--green);border-color:var(--gold)}
+  .panel{display:none;padding:24px 0 60px} .panel.on{display:block}
+  /* summary */
+  .sum{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .sum .s{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:16px 18px}
+  .sum .s .l{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:'Archivo';font-weight:700}
+  .sum .s .v{font-family:'Archivo';font-weight:900;font-size:1.5rem;color:var(--green);margin-top:4px}
+  .note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;padding:11px 14px;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+  /* inventory table */
+  .inv{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .inv .r{display:grid;grid-template-columns:1fr 96px 70px 90px;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line)}
+  .inv .r:last-child{border-bottom:none}
+  .inv .r.head{background:#F3EEE2;font-family:'Archivo';font-weight:800;text-transform:uppercase;font-size:.66rem;letter-spacing:.08em;color:var(--muted)}
+  .inv .nm{font-size:.88rem;font-weight:600} .inv .nm em{font-style:normal;color:var(--gold);font-family:'Archivo';font-weight:700;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;display:block}
+  .inv input{width:100%;border:1.5px solid var(--line);border-radius:5px;padding:7px 9px;font-family:'Hanken Grotesk';font-size:.9rem;text-align:center}
+  .inv input:focus{outline:none;border-color:var(--green)}
+  .inv .r.low input{border-color:var(--warn);background:#FBEFE9}
+  .inv .pr{font-family:'Archivo';font-weight:800;color:var(--green);font-size:.86rem;text-align:center}
+  .inv .lv{font-family:'Archivo';font-weight:700;color:var(--ink);font-size:.86rem;text-align:right}
+  .bar{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  .btn{background:var(--green);color:var(--cream);border:none;border-radius:6px;padding:11px 20px;font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.74rem;cursor:pointer}
+  .btn.gold{background:var(--gold);color:#231C0A} .btn.ghost{background:transparent;color:var(--green);border:1.5px solid var(--line)}
+  .saved{font-size:.78rem;color:var(--green);font-weight:700;opacity:0;transition:.2s} .saved.show{opacity:1}
+  /* orders */
+  .ogrid{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start}
+  .ofrm{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .ofrm h3{font-size:.95rem;text-transform:uppercase;color:var(--green);margin-bottom:12px;letter-spacing:.02em}
+  .ofrm label{font-family:'Archivo';font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin:10px 0 4px}
+  .ofrm input,.ofrm textarea{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:9px 11px;font-family:'Hanken Grotesk';font-size:.9rem}
+  .ofrm input:focus,.ofrm textarea:focus{outline:none;border-color:var(--green)}
+  .ofrm textarea{min-height:64px;resize:vertical}
+  .ofrm .btn{width:100%;margin-top:14px}
+  .olist{display:flex;flex-direction:column;gap:12px}
+  .ocard{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .ocard.done{opacity:.62}
+  .ocard .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .ocard .oh b{font-size:.98rem} .ocard .oh .d{font-size:.72rem;color:var(--muted)}
+  .ocard .meta{font-size:.84rem;color:var(--ink);margin-top:6px;white-space:pre-wrap}
+  .ocard .meta .k{color:var(--muted);font-family:'Archivo';font-weight:700;font-size:.64rem;text-transform:uppercase;letter-spacing:.06em}
+  .pill{font-family:'Archivo';font-weight:800;font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:20px}
+  .pill.new{background:#E7EFE0;color:var(--green)} .pill.fulfilled{background:#EFE7D6;color:var(--gold)}
+  .ocard .acts{display:flex;gap:8px;margin-top:12px}
+  .ocard .acts button{font-family:'Archivo';font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;border:1.5px solid var(--line);background:#fff;border-radius:5px;padding:6px 11px;cursor:pointer;color:var(--green)}
+  .ocard .acts button.del{color:var(--warn);border-color:#EAD7CF}
+  .empty{color:var(--muted);font-size:.9rem;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:30px;text-align:center}
+  @media(max-width:760px){.sum{grid-template-columns:1fr 1fr}.ogrid{grid-template-columns:1fr}.inv .r{grid-template-columns:1fr 70px 56px;}.inv .lv{display:none}.inv .head .lvh{display:none}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="box">
+    <div class="logo"><span class="g">Glow</span> <span class="k">K</span> <span class="s">Shop</span></div>
+    <p>Private admin · enter passcode</p>
+    <input id="pw" type="password" placeholder="••••••" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()">
+    <button onclick="unlock()">Enter</button>
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+  <div class="top"><div class="wrap in">
+    <div class="logo"><span>GLOW <span class="k">K</span> SHOP</span><small>Admin Dashboard</small></div>
+    <a href="index.html">View store →</a>
+  </div></div>
+
+  <div class="wrap">
+    <div class="tabs">
+      <button class="on" data-t="inv" onclick="tab('inv')">Inventory</button>
+      <button data-t="ord" onclick="tab('ord')">Orders</button>
+    </div>
+
+    <!-- INVENTORY -->
+    <section class="panel on" id="p-inv">
+      <div class="sum">
+        <div class="s"><div class="l">Total units</div><div class="v" id="sUnits">0</div></div>
+        <div class="s"><div class="l">Products</div><div class="v" id="sProducts">38</div></div>
+        <div class="s"><div class="l">Low / out</div><div class="v" id="sLow">0</div></div>
+        <div class="s"><div class="l">Sellout value</div><div class="v" id="sRev">$0</div></div>
+      </div>
+      <div class="note">Set the quantity you have in stock for each product. Rows turn red when stock drops to 5 or below. Saves automatically to this browser. "Sellout value" is the gross sales if you sold every unit at current prices.</div>
+      <div class="inv" id="inv">
+        <div class="r head"><span>Product</span><span style="text-align:center">In stock</span><span style="text-align:center">Price</span><span class="lvh" style="text-align:right">Line value</span></div>
+      </div>
+      <div class="bar"><button class="btn" onclick="saveInv()">Save quantities</button><span class="saved" id="invSaved">Saved ✓</span></div>
+    </section>
+
+    <!-- ORDERS -->
+    <section class="panel" id="p-ord">
+      <div class="ogrid">
+        <div class="ofrm">
+          <h3>Log an order</h3>
+          <label>Customer name</label><input id="oName" placeholder="Jane Doe">
+          <label>Email</label><input id="oEmail" type="email" placeholder="jane@email.com">
+          <label>Shipping address</label><textarea id="oAddr" placeholder="Street, City, State, ZIP"></textarea>
+          <label>Items / notes</label><textarea id="oItems" placeholder="2× Rose – Dewy Glow, 1× Golden Renewal Ritual"></textarea>
+          <button class="btn" onclick="addOrder()">Add order</button>
+        </div>
+        <div>
+          <div class="bar" style="margin:0 0 14px;justify-content:space-between">
+            <strong style="font-family:'Archivo';text-transform:uppercase;font-size:.8rem;color:var(--green)">Orders <span id="oCount" style="color:var(--muted)"></span></strong>
+            <button class="btn ghost" onclick="clearDone()">Clear fulfilled</button>
+          </div>
+          <div class="olist" id="olist"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  /* ===== CHANGE YOUR PASSCODE HERE ===== */
+  const PASSCODE="glowk2026";
+  /* ===================================== */
+
+  const products=[
+    ["Golden Smooth Hair Removal Cream","cream"],["24K Gold Healing Glow Serum","cream"],["Yeast Collagen Firming Peel","cream"],["Golden Firm & Lift Serum","cream"],
+    ["Blueberry Dew","mask"],["Shea Butter Glow","mask"],["Orange Vitamin C Radiance","mask"],["Strawberry Quench","mask"],["Apple Hydra Fresh","mask"],["Tea Tree Fresh Radiance","mask"],
+    ["Mango Nourish","mask"],["Aloe Hydrate & Soothe","mask"],["Cactus Hydra Plump","mask"],["Cherry Antioxidant Glow","mask"],["Lemon Vitality Glow","mask"],["Oat Silk","mask"],
+    ["Green Nutrient Glow","mask"],["Hyaluronic Acid Deep Hydration","mask"],["Snail Mucin Repair","mask"],["Honey Restore","mask"],["Coffee Wake-Up Glow","mask"],["Kiwi Antioxidant Boost","mask"],
+    ["Cyan Lemon \u2013 Refresh & Brighten","mask"],["Tomato \u2013 Bright and Even","mask"],["Grape \u2013 Firm & Bright","mask"],["Pomegranate \u2013 Antioxidant Glow","mask"],["Golden Renewal Ritual","mask"],
+    ["Goat Milk \u2013 Smooth & Bright","mask"],["Chamomile \u2013 Calm & Soothe","mask"],["Carrot \u2013 Nourish & Glow","mask"],["Bamboo \u2013 Hydrate & Bounce","mask"],["Cucumber \u2013 Cool & Hydrate","mask"],
+    ["Rose \u2013 Dewy Glow","mask"],["Avocado \u2013 Vitamin E Glow","mask"],["Green Tea \u2013 Smooth & Soothe","mask"],["Pink Peach \u2013 Soft Glow","mask"],["Coconut \u2013 Deep Hydrate, Smooth & Soften","mask"],["Lavender \u2013 Calm & Hydrate","mask"]
+  ];
+  const PRICE={cream:15,mask:10}, LOW=5;
+  let inv={}; try{inv=JSON.parse(localStorage.getItem('gks_inventory'))||{}}catch(e){inv={}}
+  let orders=[]; try{orders=JSON.parse(localStorage.getItem('gks_orders'))||[]}catch(e){orders=[]}
+
+  function unlock(){
+    if(document.getElementById('pw').value===PASSCODE){
+      document.getElementById('gate').style.display='none';
+      document.getElementById('app').style.display='block';
+      buildInv(); renderOrders();
+    } else { document.getElementById('gerr').textContent='Incorrect passcode'; }
+  }
+  function tab(t){
+    document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));
+  }
+
+  /* inventory */
+  function buildInv(){
+    const box=document.getElementById('inv');
+    box.querySelectorAll('.r:not(.head)').forEach(n=>n.remove());
+    products.forEach(([name,cat],i)=>{
+      const q=inv[name]??'';
+      const r=document.createElement('div'); r.className='r';
+      r.innerHTML=`<div class="nm">${name}${cat==='cream'?'<em>Serum / Cream</em>':''}</div>
+        <input type="number" min="0" inputmode="numeric" value="${q}" data-name="${encodeURIComponent(name)}" data-cat="${cat}">
+        <div class="pr">$${PRICE[cat]}</div><div class="lv">$0</div>`;
+      box.appendChild(r);
+    });
+    box.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>{liveTotals();}));
+    liveTotals();
+  }
+  function liveTotals(){
+    let units=0,rev=0,low=0;
+    document.querySelectorAll('#inv input').forEach(inp=>{
+      const q=parseInt(inp.value)||0, cat=inp.dataset.cat, price=PRICE[cat];
+      const r=inp.closest('.r'); r.querySelector('.lv').textContent='$'+(q*price).toLocaleString();
+      r.classList.toggle('low',inp.value!=='' && q<=LOW);
+      if(inp.value!=='' && q<=LOW)low++;
+      units+=q; rev+=q*price;
+    });
+    document.getElementById('sUnits').textContent=units.toLocaleString();
+    document.getElementById('sLow').textContent=low;
+    document.getElementById('sRev').textContent='$'+rev.toLocaleString();
+  }
+  function saveInv(){
+    const o={};
+    document.querySelectorAll('#inv input').forEach(inp=>{ if(inp.value!=='')o[decodeURIComponent(inp.dataset.name)]=parseInt(inp.value)||0; });
+    inv=o; try{localStorage.setItem('gks_inventory',JSON.stringify(inv))}catch(e){}
+    const s=document.getElementById('invSaved'); s.classList.add('show'); setTimeout(()=>s.classList.remove('show'),1400);
+  }
+
+  /* orders */
+  function saveOrders(){try{localStorage.setItem('gks_orders',JSON.stringify(orders))}catch(e){}}
+  function addOrder(){
+    const name=document.getElementById('oName').value.trim();
+    if(!name){alert('Add a customer name at least.');return;}
+    orders.unshift({id:Date.now(),name,email:document.getElementById('oEmail').value.trim(),addr:document.getElementById('oAddr').value.trim(),items:document.getElementById('oItems').value.trim(),date:new Date().toLocaleDateString(),status:'new'});
+    saveOrders(); renderOrders();
+    ['oName','oEmail','oAddr','oItems'].forEach(id=>document.getElementById(id).value='');
+  }
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function renderOrders(){
+    const list=document.getElementById('olist');
+    document.getElementById('oCount').textContent=orders.length?'('+orders.length+')':'';
+    if(!orders.length){list.innerHTML='<div class="empty">No orders logged yet. Add one on the left to start tracking shipments.</div>';return;}
+    list.innerHTML=orders.map(o=>`<div class="ocard ${o.status==='fulfilled'?'done':''}">
+      <div class="oh"><div><b>${esc(o.name)}</b> <span class="pill ${o.status}">${o.status}</span><div class="d">${o.date}</div></div></div>
+      <div class="meta">${o.email?`<span class="k">Email</span> ${esc(o.email)}\n`:''}${o.addr?`<span class="k">Ship to</span> ${esc(o.addr)}\n`:''}${o.items?`<span class="k">Items</span> ${esc(o.items)}`:''}</div>
+      <div class="acts">
+        <button onclick="toggleOrder(${o.id})">${o.status==='fulfilled'?'Mark new':'Mark fulfilled'}</button>
+        <button class="del" onclick="delOrder(${o.id})">Delete</button>
+      </div></div>`).join('');
+  }
+  function toggleOrder(id){const o=orders.find(x=>x.id===id);if(o){o.status=o.status==='fulfilled'?'new':'fulfilled';saveOrders();renderOrders();}}
+  function delOrder(id){if(confirm('Delete this order?')){orders=orders.filter(x=>x.id!==id);saveOrders();renderOrders();}}
+  function clearDone(){if(!orders.some(o=>o.status==='fulfilled'))return;if(confirm('Remove all fulfilled orders?')){orders=orders.filter(o=>o.status!=='fulfilled');saveOrders();renderOrders();}}
+</script>
+</body>
+</html>

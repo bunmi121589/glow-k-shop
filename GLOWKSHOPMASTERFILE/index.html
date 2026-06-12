@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow K Shop — Korean Beauty, Naturally</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF6EF;--paper:#fff;--green:#2E4733;--green-deep:#21341E;--ink:#23271F;--gold:#B88E3C;--pink:#D98FA0;--pink-soft:#F3D6DC;--muted:#6F6A5B;--line:#E7DCC8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+  h1,h2,h3,h4,.disp{font-family:'Archivo',sans-serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .promo{background:var(--green);color:#F3EEDF;overflow:hidden;border-bottom:1px solid var(--green-deep)}
+  .promo .t{display:flex;gap:50px;white-space:nowrap;animation:mv 28s linear infinite;padding:9px 0;font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  @keyframes mv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  header{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1240px;margin:0 auto}
+  .logo{font-family:'Archivo';font-weight:900;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:1px} .logo .logoimg{height:34px;width:auto;display:block} .logo .wordmark{display:inline-flex;align-items:center;gap:1px}
+  .logo .g,.logo .s{color:var(--green)} .logo .k{color:var(--pink);position:relative;padding:0 1px}
+  .logo .leaf{width:11px;height:11px;position:absolute;top:0;left:50%;transform:translateX(-50%)}
+  nav.links{display:flex;gap:28px;font-family:'Archivo';font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  nav.links a{color:var(--ink);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.links a:hover,nav.links a.active{border-color:var(--gold);color:var(--green)}
+  .tools{display:flex;align-items:center;gap:16px}
+  .tools a{display:flex} .tools svg{width:19px;height:19px;color:var(--ink);cursor:pointer}
+  .cart{display:flex;align-items:center;gap:6px;font-family:'Archivo';font-weight:700;font-size:.78rem;cursor:pointer;background:none;border:none;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#231C0A;padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--gold);transition:.2s;cursor:pointer;width:fit-content}
+  .btn:hover{background:transparent;color:var(--cream);border-color:var(--cream)}
+  .btn.dark{background:var(--green);border-color:var(--green);color:var(--cream)} .btn.dark:hover{background:transparent;color:var(--green)}
+  .btn.solid{background:var(--green);border-color:var(--green);color:var(--cream)} .btn.solid:hover{background:var(--gold);border-color:var(--gold);color:#231C0A}
+
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:460px;border-bottom:1px solid var(--line)}
+  .hero .left{background:var(--green);color:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:54px 50px}
+  .hero .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .hero h1{font-weight:900;font-size:clamp(2.3rem,4.2vw,3.7rem);line-height:.98;letter-spacing:-.02em;text-transform:uppercase}
+  .hero h1 em{font-style:normal;color:var(--pink)}
+  .hero p{margin:18px 0 26px;font-size:1rem;color:#D9D2C2;max-width:40ch}
+  .hero .right{position:relative;background:linear-gradient(150deg,var(--pink-soft),#DDE4D3);overflow:hidden}
+  .hero .right .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+  .hero .right .slide.on{opacity:1}
+  .hero .right .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Archivo';font-weight:800;color:var(--green);letter-spacing:.04em;padding:20px}
+  .hero .right .ph small{display:block;font-family:'Hanken Grotesk';font-weight:600;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:8px}
+
+  .strip{background:var(--green-deep);color:#EFE9DA}
+  .strip .in{display:grid;grid-template-columns:repeat(4,1fr);max-width:1240px;margin:0 auto}
+  .strip .it{padding:16px 18px;text-align:center;border-right:1px solid rgba(255,255,255,.08)} .strip .it:last-child{border-right:none}
+  .strip .it b{font-family:'Archivo';font-weight:800;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;display:block;color:#fff}
+  .strip .it span{font-size:.72rem;color:#BDB6A4}
+
+  .section-head{text-align:center;margin:56px 0 26px}
+  .section-head .eyebrow{font-family:'Archivo';font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .section-head h2{font-weight:900;font-size:1.9rem;text-transform:uppercase;color:var(--green);margin-top:6px;letter-spacing:-.01em}
+  .section-head p{color:var(--muted);font-size:.94rem;margin-top:8px}
+
+  .concerns{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .ctile{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;display:flex;align-items:flex-end;background:linear-gradient(155deg,#EFE7D6,#E3DAC6)}
+  .ctile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:.45s}
+  .ctile:hover img{transform:scale(1.06)}
+  .ctile .ov{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(33,52,30,.85),rgba(33,52,30,.05) 62%)}
+  .ctile .lab{position:relative;z-index:3;padding:16px 14px;color:#fff}
+  .ctile .lab span{font-size:.66rem;color:var(--gold);font-family:'Archivo';font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .ctile .lab b{font-family:'Archivo';font-weight:900;font-size:1.02rem;text-transform:uppercase;letter-spacing:-.01em;display:block;line-height:1.05;margin-top:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .card:hover{box-shadow:0 14px 30px -20px rgba(46,71,51,.5);transform:translateY(-3px)}
+  .card .imgwrap{position:relative;aspect-ratio:1/1;background:linear-gradient(155deg,#EFE7D6,#E3DAC6)}
+  .card.cream .imgwrap{background:linear-gradient(155deg,#F4E6CC,#ECDBB9)}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+  .card .ph2{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-family:'Archivo';font-weight:800;font-size:.92rem;color:var(--green);text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+  .card .badge{position:absolute;top:9px;left:9px;z-index:3;background:var(--gold);color:#231C0A;font-family:'Archivo';font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:4px 8px;border-radius:3px}
+  .card .body{padding:12px 13px 14px;display:flex;flex-direction:column;flex:1}
+  .card .body h3{font-family:'Hanken Grotesk';font-size:.92rem;font-weight:700;line-height:1.2;color:var(--ink)}
+  .card .tag{font-size:.74rem;color:var(--muted);margin:4px 0 11px;flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card .price{font-family:'Archivo';font-weight:800;font-size:1rem;color:var(--green)}
+  .card .add{font-family:'Archivo';font-weight:700;background:var(--green);border:none;color:var(--cream);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 13px;border-radius:4px;cursor:pointer;transition:.2s}
+  .card .add:hover{background:var(--gold);color:#231C0A}
+  .center{text-align:center;margin-top:26px}
+
+  .editorial{position:relative;border-radius:12px;overflow:hidden;margin:60px 0 6px;min-height:360px;display:flex;align-items:center}
+  .editorial img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .editorial .ov{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(33,52,30,.82),rgba(33,52,30,.22))}
+  .editorial .ed{position:relative;z-index:3;color:var(--cream);padding:46px;max-width:560px}
+  .editorial .ed .eyebrow{color:var(--gold);font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+  .editorial .ed h2{font-weight:900;font-size:clamp(1.7rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;margin-bottom:14px}
+  .editorial .ed p{color:#E7E1D2;font-size:.99rem;max-width:46ch;margin-bottom:22px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:24px 18px;text-align:center}
+  .step .n{font-family:'Archivo';font-weight:900;font-size:1.7rem;color:var(--gold)}
+  .step h4{font-weight:800;text-transform:uppercase;font-size:.88rem;color:var(--green);margin:8px 0 5px}
+  .step p{font-size:.82rem;color:var(--muted)}
+
+  .sgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .stile{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:linear-gradient(155deg,#EFE7D6,#E3DAC6)}
+  .stile img{width:100%;height:100%;object-fit:cover;transition:.45s}
+  .stile:hover img{transform:scale(1.07)}
+  .stile .ig{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(33,52,30,.4);transition:.25s}
+  .stile:hover .ig{opacity:1}
+  .stile .ig svg{width:24px;height:24px;color:#fff}
+
+  .news{padding:50px 0;text-align:center}
+  .news h3{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+  .news p{color:var(--muted);font-size:.92rem;margin-bottom:16px}
+  .news .form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .news input{font-family:'Hanken Grotesk';background:#fff;border:1.5px solid var(--line);padding:12px 16px;border-radius:4px;font-size:.9rem;min-width:240px}
+  .news input:focus{outline:none;border-color:var(--green)}
+
+  footer{background:var(--green-deep);color:#D9D2C2}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px;padding:44px 0 24px}
+  .foot .logo{font-size:1.3rem;margin-bottom:10px} .foot .logo .g,.foot .logo .s{color:#fff} .foot .logo .k{color:var(--pink)}
+  .foot p{font-size:.82rem;color:#B7B0A0;max-width:32ch}
+  .foot h5{font-family:'Archivo';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:800;margin-bottom:12px}
+  .foot ul{list-style:none} .foot li{margin-bottom:8px;font-size:.84rem;color:#B7B0A0} .foot li a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.74rem;color:#9b9484}
+
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--green);color:var(--cream);padding:12px 22px;border-radius:5px;font-family:'Archivo';font-weight:700;font-size:.78rem;letter-spacing:.04em;z-index:1100;transition:transform .35s;box-shadow:0 14px 30px -16px rgba(0,0,0,.4)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .overlay{position:fixed;inset:0;background:rgba(33,52,30,.45);opacity:0;visibility:hidden;transition:.3s;z-index:998}
+  .overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:380px;max-width:90vw;background:var(--cream);z-index:999;transform:translateX(100%);transition:transform .32s;display:flex;flex-direction:column;box-shadow:-20px 0 50px -30px rgba(0,0,0,.5)}
+  .drawer.open{transform:translateX(0)}
+  .dh{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+  .dh h3{font-family:'Archivo';font-weight:900;font-size:1.05rem;text-transform:uppercase;color:var(--green)}
+  .dh .x{cursor:pointer;font-size:1.5rem;color:var(--muted);background:none;border:none;line-height:1}
+  .ditems{flex:1;overflow-y:auto;padding:4px 22px}
+  .diempty{text-align:center;color:var(--muted);padding:54px 12px;font-size:.92rem}
+  .diempty b{display:block;font-family:'Archivo';color:var(--green);text-transform:uppercase;font-size:.95rem;margin-bottom:6px}
+  .ditem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .ditem .thumb{width:56px;height:56px;border-radius:6px;background:linear-gradient(155deg,#EFE7D6,#E3DAC6);flex-shrink:0;overflow:hidden}
+  .ditem .thumb img{width:100%;height:100%;object-fit:cover}
+  .ditem .info{flex:1} .ditem .info h4{font-size:.84rem;font-weight:700;line-height:1.2}
+  .ditem .info .p{font-family:'Archivo';font-weight:800;color:var(--green);font-size:.82rem;margin-top:2px}
+  .qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:5px;margin-top:7px}
+  .qty button{width:26px;height:24px;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--green);line-height:1}
+  .qty span{min-width:26px;text-align:center;font-size:.82rem;font-weight:700}
+  .ditem .rm{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.72rem;text-decoration:underline;padding:2px 0}
+  .dfoot{border-top:1px solid var(--line);padding:18px 22px}
+  .dfoot .sub{display:flex;justify-content:space-between;font-family:'Archivo';font-weight:800;text-transform:uppercase;font-size:.92rem;color:var(--green);margin-bottom:3px}
+  .dfoot .ship{font-size:.74rem;color:var(--muted);margin-bottom:14px}
+  .dfoot .btn{width:100%}
+
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr}.hero .right{min-height:300px}
+    .strip .in{grid-template-columns:1fr 1fr}
+    .concerns{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .sgrid{grid-template-columns:repeat(3,1fr)}
+    .foot{grid-template-columns:1fr 1fr}
+    nav.links{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="promo"><div class="t" id="promo"></div></div>
+<header><div class="nav">
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Glow K Shop" class="logoimg" onload="if(this.nextElementSibling)this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"><span class="wordmark"><span class="g">GLOW</span><span class="k"><svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 6 4 10 4 15a8 8 0 0016 0c0-5-3-9-8-13z" fill="#D98FA0"/></svg>K</span><span class="s">SHOP</span></span></a>
+  <nav class="links"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <div class="tools">
+    <a href="shop.html" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
+    <button class="cart" onclick="openCart()" aria-label="Open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg><span class="cc">0</span></button>
+  </div>
+</div></header>
+
+<section class="hero">
+  <div class="left">
+    <div class="eyebrow">Korean Beauty · Natural Botanicals</div>
+    <h1>Glow like <em>never</em> before</h1>
+    <p>K-beauty masks and serums made with natural ingredients — for soft, dewy, glass-skin glow.</p>
+    <a href="shop.html" class="btn">Shop the Glow</a>
+  </div>
+  <div class="right">
+    <img class="slide on" src="images/hero.png" alt="" onerror="this.style.display='none'">
+    <img class="slide" src="images/model1.png" alt="" onerror="this.style.display='none'">
+    <img class="slide" src="images/model2.png" alt="" onerror="this.style.display='none'">
+    <div class="ph">GLOW K SHOP<small>Hero photos · images/hero.png</small></div>
+  </div>
+</section>
+
+<div class="strip"><div class="in">
+  <div class="it"><b>Free Shipping</b><span>On every order</span></div>
+  <div class="it"><b>Korean-Inspired</b><span>K-beauty rituals</span></div>
+  <div class="it"><b>Natural</b><span>No harsh chemicals</span></div>
+  <div class="it"><b>Glass-Skin Glow</b><span>Soft, dewy, lit-from-within</span></div>
+</div></div>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Find Your Glow</div>
+    <h2>Shop by skin concern</h2>
+    <p>Whatever your skin needs today — we made a ritual for it.</p>
+  </div>
+  <div class="concerns">
+    <a class="ctile" href="shop.html#bright"><img src="images/orange-vitamin-c-radiance.png" alt="" onerror="this.style.display='none'"><div class="ov"></div><div class="lab"><span>Shop</span><b>Brightening</b></div></a>
+    <a class="ctile" href="shop.html#hydrate"><img src="images/aloe-hydrate-and-soothe.png" alt="" onerror="this.style.display='none'"><div class="ov"></div><div class="lab"><span>Shop</span><b>Hydrating</b></div></a>
+    <a class="ctile" href="shop.html#soothe"><img src="images/chamomile-calm-and-soothe.png" alt="" onerror="this.style.display='none'"><div class="ov"></div><div class="lab"><span>Shop</span><b>Soothing &amp; Calm</b></div></a>
+    <a class="ctile" href="shop.html#firm"><img src="images/golden-renewal-ritual.png" alt="" onerror="this.style.display='none'"><div class="ov"></div><div class="lab"><span>Shop</span><b>Firm &amp; Renew</b></div></a>
+    <a class="ctile" href="shop.html#wake"><img src="images/coffee-wake-up-glow.png" alt="" onerror="this.style.display='none'"><div class="ov"></div><div class="lab"><span>Shop</span><b>Wake-Up</b></div></a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Editors' Picks</div>
+    <h2>Featured glow</h2>
+  </div>
+  <div class="grid" id="feat"></div>
+  <div class="center"><a href="shop.html" class="btn solid">Shop All</a></div>
+</section>
+
+<section class="wrap">
+  <div class="editorial">
+    <img src="images/about.png" alt="" onerror="this.style.display='none'">
+    <div class="ov"></div>
+    <div class="ed">
+      <div class="eyebrow">Made For Every Glow</div>
+      <h2>Beauty that works with your skin</h2>
+      <p>Built on Korean beauty philosophy — natural botanicals that nourish and heal, never strip. For every skin tone, every age, every glow.</p>
+      <a href="about.html" class="btn">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">The Ritual</div>
+    <h2>Glass skin in four steps</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h4>Cleanse</h4><p>Start with freshly washed, patted-dry skin.</p></div>
+    <div class="step"><div class="n">2</div><h4>Apply</h4><p>Smooth on the mask, lining up the eye and mouth openings.</p></div>
+    <div class="step"><div class="n">3</div><h4>Relax</h4><p>Leave on 15–20 minutes and breathe.</p></div>
+    <div class="step"><div class="n">4</div><h4>Seal</h4><p>Pat in the leftover essence — don't rinse — then moisturize.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">@glowkshop</div>
+    <h2>Follow the glow</h2>
+  </div>
+  <div class="sgrid">
+    <a class="stile" href="#" aria-label="Instagram"><img src="images/model1.png" alt="" onerror="this.style.display='none'"><span class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a>
+    <a class="stile" href="#"><img src="images/rose-dewy-glow.png" alt="" onerror="this.style.display='none'"><span class="ig"></span></a>
+    <a class="stile" href="#"><img src="images/model2.png" alt="" onerror="this.style.display='none'"><span class="ig"></span></a>
+    <a class="stile" href="#"><img src="images/golden-renewal-ritual.png" alt="" onerror="this.style.display='none'"><span class="ig"></span></a>
+    <a class="stile" href="#"><img src="images/hero.png" alt="" onerror="this.style.display='none'"><span class="ig"></span></a>
+    <a class="stile" href="#"><img src="images/cucumber-cool-and-hydrate.png" alt="" onerror="this.style.display='none'"><span class="ig"></span></a>
+  </div>
+</section>
+
+<section class="wrap news">
+  <h3>Join the glow list</h3>
+  <p>Early drops, rituals, and a little glow in your inbox.</p>
+  <div class="form"><input type="email" placeholder="your@email.com"><button class="btn dark" onclick="toast('Welcome to the glow list')">Subscribe</button></div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div><div class="logo disp" style="font-weight:900"><span class="g">GLOW</span><span class="k">K</span><span class="s">SHOP</span></div><p>Korean beauty masks &amp; serums made with natural botanicals. Free shipping on every order.</p></div>
+    <div><h5>Shop</h5><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html#bright">Brightening</a></li><li><a href="shop.html#hydrate">Hydrating</a></li><li><a href="shop.html#firm">Firm &amp; Renew</a></li></ul></div>
+    <div><h5>About</h5><ul><li><a href="about.html">Our Glow</a></li><li><a href="about.html">How to Use</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li><li><a href="contact.html">FAQ</a></li></ul></div>
+  </div>
+  <div class="wrap foot-bottom"><span>© 2026 Glow K Shop · glowkshop.com</span><span>Free shipping on all orders</span></div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="dh"><h3>Your Bag</h3><button class="x" onclick="closeCart()" aria-label="Close">×</button></div>
+  <div class="ditems" id="ditems"></div>
+  <div class="dfoot">
+    <div class="sub"><span>Subtotal</span><span id="subtotal">$0</span></div>
+    <div class="ship">Shipping is free on every order.</div>
+    <button class="btn dark" onclick="checkout()">Checkout</button>
+  </div>
+</aside>
+
+<div class="toast" id="t"></div>
+
+<script>
+  const PRICE={cream:15,mask:10};
+  const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const featured=[
+    {name:"Golden Renewal Ritual",cat:"mask",tag:"24K gold + HA renewal ritual",gold:1},
+    {name:"24K Gold Healing Glow Serum",cat:"cream",tag:"Gold + hyaluronic acid glow",gold:1},
+    {name:"Snail Mucin Repair",cat:"mask",tag:"Snail mucin repair + bounce"},
+    {name:"Aloe Hydrate & Soothe",cat:"mask",tag:"Cooling aloe calm"}
+  ];
+  const feat=document.getElementById('feat');
+  featured.forEach(p=>{
+    const price=PRICE[p.cat], sg=slug(p.name);
+    const c=document.createElement('div'); c.className='card '+p.cat;
+    c.innerHTML=`<div class="imgwrap">${p.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="ph2">${p.name}</div></div>
+    <div class="body"><h3>${p.name}</h3><div class="tag">${p.tag}</div><div class="row"><span class="price">$${price}</span><button class="add">Add</button></div></div>`;
+    c.querySelector('.add').addEventListener('click',()=>addToCart(p.name,price));
+    feat.appendChild(c);
+  });
+
+  /* hero slideshow */
+  const slides=document.querySelectorAll('.hero .right .slide');
+  if(slides.length>1){let si=0;setInterval(()=>{slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on');},4500);}
+
+  /* ---- Cart (shared) ---- */
+  let cart=[]; try{cart=JSON.parse(localStorage.getItem('gks_cart'))||[]}catch(e){cart=[]}
+  function saveCart(){try{localStorage.setItem('gks_cart',JSON.stringify(cart))}catch(e){}}
+  function cartCount(){return cart.reduce((n,i)=>n+i.qty,0)}
+  function addToCart(name,price){const e=cart.find(i=>i.name===name);if(e)e.qty++;else cart.push({name,price,qty:1});saveCart();updateCart();toast('Added · '+name);}
+  function updateCart(){
+    document.querySelectorAll('.cc').forEach(c=>c.textContent=cartCount());
+    const items=document.getElementById('ditems'), sub=document.getElementById('subtotal');
+    if(!items)return;
+    if(!cart.length){items.innerHTML='<div class="diempty"><b>Your bag is empty</b>Add a little glow to get started.</div>';if(sub)sub.textContent='$0';return;}
+    items.innerHTML=cart.map(i=>`<div class="ditem" data-n="${encodeURIComponent(i.name)}"><div class="thumb"><img src="images/${slug(i.name)}.png" onerror="this.style.display='none'"></div><div class="info"><h4>${i.name}</h4><div class="p">$${i.price}</div><div class="qty"><button data-a="dec">−</button><span>${i.qty}</span><button data-a="inc">+</button></div></div><button class="rm" data-a="rm">Remove</button></div>`).join('');
+    if(sub)sub.textContent='$'+cart.reduce((s,i)=>s+i.price*i.qty,0);
+  }
+  document.getElementById('ditems').addEventListener('click',e=>{
+    const btn=e.target.closest('[data-a]'); if(!btn)return;
+    const name=decodeURIComponent(btn.closest('.ditem').dataset.n);
+    const it=cart.find(i=>i.name===name); if(!it)return;
+    const a=btn.dataset.a;
+    if(a==='inc')it.qty++; else if(a==='dec')it.qty--; else if(a==='rm')it.qty=0;
+    if(it.qty<=0)cart=cart.filter(i=>i.name!==name);
+    saveCart();updateCart();
+  });
+  function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');}
+  function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+  function checkout(){toast('Checkout is coming soon — payments are being set up');}
+  updateCart();
+
+  let tm; function toast(m){const e=document.getElementById('t');e.textContent=m;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),2000);}
+  const pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
+  document.getElementById('promo').innerHTML='<span>'+pr+pr+'</span><span>'+pr+pr+'</span>';
+</script>
+</body>
+</html>
