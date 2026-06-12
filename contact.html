@@ -25,110 +25,186 @@
   nav.links{display:flex;gap:28px;font-family:'Archivo';font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
   nav.links a{color:var(--ink);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
   nav.links a:hover,nav.links a.active{border-color:var(--gold);color:var(--green)}
-  .tools{display:flex;align-items:center;gap:16px}
+  .tools{display:flex;align-items:center;gap:16px} .tools a{display:flex}
   .tools svg{width:19px;height:19px;color:var(--ink);cursor:pointer}
-  .cart{display:flex;align-items:center;gap:6px;font-family:'Archivo';font-weight:700;font-size:.78rem;cursor:pointer}
-  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:var(--cream);padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--green);transition:.2s;cursor:pointer;width:fit-content}
-  .btn:hover{background:transparent;color:var(--green)}
-  .phero{background:var(--green);color:var(--cream);text-align:center;padding:62px 24px}
+  .cart{display:flex;align-items:center;gap:6px;font-family:'Archivo';font-weight:700;font-size:.78rem;cursor:pointer;background:none;border:none;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#231C0A;padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--gold);transition:.2s;cursor:pointer;width:fit-content}
+  .btn:hover{background:transparent;color:var(--green);border-color:var(--green)}
+  .btn.dark{background:var(--green);border-color:var(--green);color:var(--cream)} .btn.dark:hover{background:transparent;color:var(--green)}
+  .phero{background:var(--green);color:var(--cream);text-align:center;padding:58px 24px}
   .phero .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-  .phero h1{font-weight:900;font-size:clamp(2.2rem,4.2vw,3.5rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  .phero p{color:#D9D2C2;max-width:50ch;margin:16px auto 0;font-size:1rem}
-  .cgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;padding:54px 0}
-  .cinfo h2{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:18px;letter-spacing:-.01em}
-  .citem{margin-bottom:20px}
-  .citem .lbl{font-family:'Archivo';font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-  .citem a,.citem p{color:var(--ink);font-size:.96rem} .citem a:hover{color:var(--green)}
-  .socials{display:flex;gap:10px;margin-top:6px}
-  .socials a{width:36px;height:36px;border:1.5px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--green);transition:.2s}
-  .socials a:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
-  .socials svg{width:17px;height:17px}
+  .phero h1{font-weight:900;font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+  .phero p{color:#D9D2C2;max-width:50ch;margin:14px auto 0;font-size:1rem}
+  .cgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:42px;padding:54px 0}
   .cform{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:28px}
-  .cform h2{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:16px;letter-spacing:-.01em}
-  .field{margin-bottom:14px}
-  .field label{font-family:'Archivo';font-weight:700;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
-  .field input,.field textarea{width:100%;font-family:'Hanken Grotesk';font-size:.92rem;border:1.5px solid var(--line);border-radius:6px;padding:11px 13px;background:var(--cream)}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--green)}
-  .field textarea{min-height:120px;resize:vertical}
-  .faq{padding:14px 0 20px}
-  .faq .qa{border-top:1px solid var(--line);padding:18px 0}
-  .faq .qa h4{font-weight:800;text-transform:uppercase;font-size:.92rem;color:var(--green);margin-bottom:6px}
-  .faq .qa p{color:var(--muted);font-size:.92rem;max-width:70ch}
-  .sec-head{text-align:center;margin:40px 0 10px}
-  .sec-head .eyebrow{font-family:'Archivo';font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-  .sec-head h2{font-weight:900;font-size:1.8rem;text-transform:uppercase;color:var(--green);margin-top:6px}
-  footer{background:var(--green-deep);color:#D9D2C2;margin-top:20px}
+  .cform h2{font-weight:900;font-size:1.4rem;text-transform:uppercase;color:var(--green);margin-bottom:6px;letter-spacing:-.01em}
+  .cform .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+  .cform label{font-family:'Archivo';font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin:14px 0 5px}
+  .cform input,.cform textarea{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:11px 13px;font-family:'Hanken Grotesk';font-size:.95rem;background:var(--cream)}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--green);background:#fff}
+  .cform textarea{min-height:120px;resize:vertical}
+  .cform .btn{margin-top:18px;width:100%}
+  .cinfo h3{font-family:'Archivo';font-weight:900;font-size:1.05rem;text-transform:uppercase;color:var(--green);margin-bottom:6px;letter-spacing:-.01em}
+  .cinfo .blk{padding:18px 0;border-bottom:1px solid var(--line)}
+  .cinfo .blk:first-of-type{padding-top:0}
+  .cinfo .blk p{color:var(--muted);font-size:.92rem;margin-top:3px}
+  .cinfo .blk a{color:var(--green);font-weight:600}
+  .socials{display:flex;gap:10px;margin-top:10px}
+  .socials a{width:40px;height:40px;border:1.5px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--green);transition:.2s}
+  .socials a:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
+  .socials svg{width:19px;height:19px}
+  .faq{padding:10px 0 54px}
+  .faq .sec-head{text-align:center;margin:0 0 24px}
+  .faq .sec-head .eyebrow{font-family:'Archivo';font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .faq .sec-head h2{font-weight:900;font-size:1.8rem;text-transform:uppercase;color:var(--green);margin-top:6px;letter-spacing:-.01em}
+  .qa{max-width:760px;margin:0 auto}
+  .qa details{background:var(--paper);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+  .qa summary{cursor:pointer;padding:16px 18px;font-family:'Archivo';font-weight:700;font-size:.95rem;color:var(--green);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary::after{content:'+';font-size:1.3rem;color:var(--gold);font-weight:700}
+  .qa details[open] summary::after{content:'–'}
+  .qa .a{padding:0 18px 16px;color:var(--muted);font-size:.92rem}
+  .news{padding:50px 0;text-align:center}
+  .news h3{font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+  .news .form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .news input{font-family:'Hanken Grotesk';background:#fff;border:1.5px solid var(--line);padding:12px 16px;border-radius:4px;font-size:.9rem;min-width:240px}
+  .news input:focus{outline:none;border-color:var(--green)}
+  footer{background:var(--green-deep);color:#D9D2C2}
   .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px;padding:44px 0 24px}
   .foot .logo{font-size:1.3rem;margin-bottom:10px} .foot .logo .g,.foot .logo .s{color:#fff} .foot .logo .k{color:var(--pink)}
   .foot p{font-size:.82rem;color:#B7B0A0;max-width:32ch}
   .foot h5{font-family:'Archivo';font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:800;margin-bottom:12px}
   .foot ul{list-style:none} .foot li{margin-bottom:8px;font-size:.84rem;color:#B7B0A0} .foot li a:hover{color:var(--gold)}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.74rem;color:#9b9484}
-  @media(max-width:860px){.cgrid{grid-template-columns:1fr;gap:28px}.foot{grid-template-columns:1fr 1fr}nav.links{display:none}}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--green);color:var(--cream);padding:12px 22px;border-radius:5px;font-family:'Archivo';font-weight:700;font-size:.78rem;letter-spacing:.04em;z-index:1100;transition:transform .35s;box-shadow:0 14px 30px -16px rgba(0,0,0,.4)} .toast.show{transform:translateX(-50%) translateY(0)}
+  .overlay{position:fixed;inset:0;background:rgba(33,52,30,.45);opacity:0;visibility:hidden;transition:.3s;z-index:998} .overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:380px;max-width:90vw;background:var(--cream);z-index:999;transform:translateX(100%);transition:transform .32s;display:flex;flex-direction:column;box-shadow:-20px 0 50px -30px rgba(0,0,0,.5)} .drawer.open{transform:translateX(0)}
+  .dh{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)} .dh h3{font-family:'Archivo';font-weight:900;font-size:1.05rem;text-transform:uppercase;color:var(--green)} .dh .x{cursor:pointer;font-size:1.5rem;color:var(--muted);background:none;border:none;line-height:1}
+  .ditems{flex:1;overflow-y:auto;padding:4px 22px}
+  .diempty{text-align:center;color:var(--muted);padding:54px 12px;font-size:.92rem} .diempty b{display:block;font-family:'Archivo';color:var(--green);text-transform:uppercase;font-size:.95rem;margin-bottom:6px}
+  .ditem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .ditem .thumb{width:56px;height:56px;border-radius:6px;background:linear-gradient(155deg,#EFE7D6,#E3DAC6);flex-shrink:0;overflow:hidden} .ditem .thumb img{width:100%;height:100%;object-fit:cover}
+  .ditem .info{flex:1} .ditem .info h4{font-size:.84rem;font-weight:700;line-height:1.2} .ditem .info .p{font-family:'Archivo';font-weight:800;color:var(--green);font-size:.82rem;margin-top:2px}
+  .qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:5px;margin-top:7px} .qty button{width:26px;height:24px;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--green);line-height:1} .qty span{min-width:26px;text-align:center;font-size:.82rem;font-weight:700}
+  .ditem .rm{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.72rem;text-decoration:underline;padding:2px 0}
+  .dfoot{border-top:1px solid var(--line);padding:18px 22px} .dfoot .sub{display:flex;justify-content:space-between;font-family:'Archivo';font-weight:800;text-transform:uppercase;font-size:.92rem;color:var(--green);margin-bottom:3px} .dfoot .ship{font-size:.74rem;color:var(--muted);margin-bottom:14px} .dfoot .btn{width:100%}
+  @media(max-width:860px){.cgrid{grid-template-columns:1fr;gap:26px}.foot{grid-template-columns:1fr 1fr}nav.links{display:none}}
 </style>
 </head>
 <body>
 <div class="promo"><div class="t" id="promo"></div></div>
 <header><div class="nav">
   <a href="index.html" class="logo"><img src="images/logo.png" alt="Glow K Shop" class="logoimg" onload="if(this.nextElementSibling)this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"><span class="wordmark"><span class="g">GLOW</span><span class="k"><svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 6 4 10 4 15a8 8 0 0016 0c0-5-3-9-8-13z" fill="#D98FA0"/></svg>K</span><span class="s">SHOP</span></span></a>
-  <nav class="links"><a href="index.html">Shop</a><a href="about.html">About</a><a href="contact.html" class="active">Contact</a></nav>
-  <div class="tools"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><a href="index.html" class="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg><span>0</span></a></div>
+  <nav class="links"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html" class="active">Contact</a></nav>
+  <div class="tools"><a href="shop.html" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a><button class="cart" onclick="openCart()" aria-label="Open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg><span class="cc">0</span></button></div>
 </div></header>
 
 <section class="phero">
-  <div class="eyebrow">Get In Touch</div>
-  <h1>Let's connect</h1>
-  <p>Questions about an order, an ingredient, or just want to say hi? We'd love to hear from you.</p>
+  <div class="eyebrow">We'd Love To Hear From You</div>
+  <h1>Get in touch</h1>
+  <p>Questions about a product, your order, or your glow ritual? Send us a note — we read every message.</p>
 </section>
 
 <section class="wrap cgrid">
+  <div class="cform">
+    <h2>Send a message</h2>
+    <div class="sub">We usually reply within 1–2 business days.</div>
+    <label for="cn">Your name</label>
+    <input id="cn" type="text" placeholder="Jane Doe">
+    <label for="ce">Email</label>
+    <input id="ce" type="email" placeholder="you@email.com">
+    <label for="cm">Message</label>
+    <textarea id="cm" placeholder="How can we help?"></textarea>
+    <button class="btn" onclick="send()">Send message</button>
+  </div>
   <div class="cinfo">
-    <h2>Reach Us</h2>
-    <div class="citem"><div class="lbl">Email</div><a href="mailto:hello@glowkshop.com">hello@glowkshop.com</a></div>
-    <div class="citem"><div class="lbl">Response Time</div><p>We reply within 1–2 business days.</p></div>
-    <div class="citem"><div class="lbl">Shipping</div><p>Free on every order, everywhere.</p></div>
-    <div class="citem"><div class="lbl">Follow</div>
+    <div class="blk">
+      <h3>Email us</h3>
+      <p><a href="mailto:hello@glowkshop.com">hello@glowkshop.com</a></p>
+      <p>The fastest way to reach us for anything about your order.</p>
+    </div>
+    <div class="blk">
+      <h3>Shipping</h3>
+      <p>Free shipping on every order, always. Most orders arrive in 2–5 business days within the US.</p>
+    </div>
+    <div class="blk">
+      <h3>Follow the glow</h3>
+      <p>Rituals, drops, and behind the scenes.</p>
       <div class="socials">
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2 1.6 3.6 3.7 3.9V9c-1.4 0-2.7-.4-3.7-1.1V15a5 5 0 11-5-5c.2 0 .4 0 .6.1v2.2a2.8 2.8 0 102 2.7V3h2.4z"/></svg></a>
-        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2 0-3.3 1.4-3.3 3 0 .8.4 1.6 1 1.9.1 0 .2 0 .2-.2l.2-.7c0-.1 0-.2-.1-.3-.3-.3-.4-.7-.4-1.2 0-1.4 1-2.5 2.6-2.5 1.4 0 2.2.9 2.2 2 0 1.6-.7 2.9-1.7 2.9-.6 0-1-.5-.9-1.1l.4-1.7c.1-.4-.1-.8-.5-.8-.6 0-1 .6-1 1.4 0 .5.2.8.2.8l-.7 2.9c-.2.9 0 2 0 2.1 0 .1.1.1.2.1.1-.1.7-.9.9-1.7l.4-1.4c.2.4.8.7 1.4.7 1.9 0 3.2-1.7 3.2-4 0-1.7-1.5-3.3-3.7-3.3z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.7V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2.9.5 1.7 1.4 1.7 1.7 0 2.9-2.2 2.9-4.7 0-1.9-1.3-3.4-3.7-3.4a4.3 4.3 0 0 0-4.5 4.3c0 .9.3 1.5.7 2 .2.2.2.3.1.5l-.2.9c-.1.3-.3.4-.6.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.9-.5-2.2-1.1l-.6 2.3c-.2.8-.7 1.7-1 2.3A10 10 0 1 0 12 2z"/></svg></a>
       </div>
     </div>
   </div>
-  <div class="cform">
-    <h2>Send a Message</h2>
-    <div class="field"><label>Name</label><input id="fn" type="text" placeholder="Your name"></div>
-    <div class="field"><label>Email</label><input id="fe" type="email" placeholder="your@email.com"></div>
-    <div class="field"><label>Message</label><textarea id="fm" placeholder="How can we help?"></textarea></div>
-    <button class="btn" onclick="send()">Send Message</button>
-    <p style="font-size:.74rem;color:var(--muted);margin-top:10px">This opens your email app to send to hello@glowkshop.com.</p>
+</section>
+
+<section class="wrap faq">
+  <div class="sec-head"><div class="eyebrow">Good To Know</div><h2>Frequently asked</h2></div>
+  <div class="qa">
+    <details><summary>How long does shipping take?</summary><div class="a">Orders ship within 1–2 business days and usually arrive in 2–5 business days within the US. Shipping is always free, with no minimum.</div></details>
+    <details><summary>Do you ship internationally?</summary><div class="a">Right now we ship within the United States. International shipping is on our list as we grow — join the glow list to hear when it opens.</div></details>
+    <details><summary>What's your return policy?</summary><div class="a">If something arrives damaged or isn't right, email us at hello@glowkshop.com within 14 days of delivery and we'll make it right.</div></details>
+    <details><summary>Are the products natural?</summary><div class="a">Every formula is built on Korean beauty philosophy — natural botanicals that nourish and heal, with no harsh chemicals.</div></details>
+    <details><summary>How do I use the masks?</summary><div class="a">Cleanse, apply to dry skin, relax for 15–20 minutes, then pat in the leftover essence and moisturize. See the full ritual on our <a href="about.html" style="color:var(--green);font-weight:600">About</a> page.</div></details>
   </div>
 </section>
 
-<section class="wrap">
-  <div class="sec-head"><div class="eyebrow">Help</div><h2>FAQ</h2></div>
-  <div class="faq">
-    <div class="qa"><h4>How much is shipping?</h4><p>Shipping is free on every order — no minimums, no surprises at checkout.</p></div>
-    <div class="qa"><h4>How long does delivery take?</h4><p>Orders are processed within 1–2 business days, and most arrive within standard domestic shipping windows once dispatched.</p></div>
-    <div class="qa"><h4>What's your return policy?</h4><p>If something isn't right, email us within 14 days of delivery and we'll make it right.</p></div>
-    <div class="qa"><h4>Are the products natural?</h4><p>Our formulas lean on natural botanicals with no harsh chemicals — gentle, nourishing K-beauty designed to help skin glow.</p></div>
-  </div>
+<section class="wrap news">
+  <h3>Join the glow list</h3>
+  <div class="form"><input type="email" placeholder="your@email.com"><button class="btn dark" onclick="toast('Welcome to the glow list')">Subscribe</button></div>
 </section>
 
 <footer><div class="wrap foot">
   <div><div class="logo disp" style="font-weight:900"><span class="g">GLOW</span><span class="k">K</span><span class="s">SHOP</span></div><p>Korean beauty masks &amp; serums made with natural botanicals. Free shipping on every order.</p></div>
-  <div><h5>Shop</h5><ul><li><a href="index.html">All Products</a></li><li><a href="index.html">Masks</a></li><li><a href="index.html">Serums &amp; Creams</a></li></ul></div>
+  <div><h5>Shop</h5><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html#bright">Brightening</a></li><li><a href="shop.html#hydrate">Hydrating</a></li><li><a href="shop.html#firm">Firm &amp; Renew</a></li></ul></div>
   <div><h5>About</h5><ul><li><a href="about.html">Our Glow</a></li><li><a href="about.html">How to Use</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   <div><h5>Help</h5><ul><li><a href="contact.html">Shipping</a></li><li><a href="contact.html">Returns</a></li><li><a href="contact.html">FAQ</a></li></ul></div>
 </div><div class="wrap foot-bottom"><span>© 2026 Glow K Shop · glowkshop.com</span><span>Free shipping on all orders</span></div></footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="dh"><h3>Your Bag</h3><button class="x" onclick="closeCart()" aria-label="Close">×</button></div>
+  <div class="ditems" id="ditems"></div>
+  <div class="dfoot"><div class="sub"><span>Subtotal</span><span id="subtotal">$0</span></div><div class="ship">Shipping is free on every order.</div><button class="btn dark" onclick="checkout()">Checkout</button></div>
+</aside>
+<div class="toast" id="t"></div>
+
 <script>
   function send(){
-    var n=document.getElementById('fn').value,e=document.getElementById('fe').value,m=document.getElementById('fm').value;
-    if(!n||!e||!m){alert('Please fill in your name, email, and message.');return;}
-    var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\n'+m);
-    window.location.href='mailto:hello@glowkshop.com?subject='+encodeURIComponent('Glow K Shop — message from '+n)+'&body='+body;
+    const n=document.getElementById('cn').value.trim();
+    const e=document.getElementById('ce').value.trim();
+    const m=document.getElementById('cm').value.trim();
+    if(!m){toast('Add a message first');return;}
+    const subject=encodeURIComponent('Glow K Shop — message from '+(n||'a customer'));
+    const body=encodeURIComponent(m+'\n\n— '+(n||'')+(e?(' ('+e+')'):''));
+    window.location.href='mailto:hello@glowkshop.com?subject='+subject+'&body='+body;
+    toast('Opening your email app…');
   }
-  var pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
+
+  const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  let cart=[]; try{cart=JSON.parse(localStorage.getItem('gks_cart'))||[]}catch(e){cart=[]}
+  function saveCart(){try{localStorage.setItem('gks_cart',JSON.stringify(cart))}catch(e){}}
+  function cartCount(){return cart.reduce((n,i)=>n+i.qty,0)}
+  function updateCart(){
+    document.querySelectorAll('.cc').forEach(c=>c.textContent=cartCount());
+    const items=document.getElementById('ditems'), sub=document.getElementById('subtotal'); if(!items)return;
+    if(!cart.length){items.innerHTML='<div class="diempty"><b>Your bag is empty</b>Add a little glow to get started.</div>';if(sub)sub.textContent='$0';return;}
+    items.innerHTML=cart.map(i=>`<div class="ditem" data-n="${encodeURIComponent(i.name)}"><div class="thumb"><img src="images/${slug(i.name)}.png" onerror="this.style.display='none'"></div><div class="info"><h4>${i.name}</h4><div class="p">$${i.price}</div><div class="qty"><button data-a="dec">−</button><span>${i.qty}</span><button data-a="inc">+</button></div></div><button class="rm" data-a="rm">Remove</button></div>`).join('');
+    if(sub)sub.textContent='$'+cart.reduce((s,i)=>s+i.price*i.qty,0);
+  }
+  document.getElementById('ditems').addEventListener('click',e=>{
+    const btn=e.target.closest('[data-a]'); if(!btn)return;
+    const name=decodeURIComponent(btn.closest('.ditem').dataset.n); const it=cart.find(i=>i.name===name); if(!it)return;
+    const a=btn.dataset.a; if(a==='inc')it.qty++; else if(a==='dec')it.qty--; else if(a==='rm')it.qty=0;
+    if(it.qty<=0)cart=cart.filter(i=>i.name!==name); saveCart();updateCart();
+  });
+  function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');}
+  function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+  function checkout(){toast('Checkout is coming soon — payments are being set up');}
+  updateCart();
+  let tm; function toast(m){const e=document.getElementById('t');e.textContent=m;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),2000);}
+  const pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
   document.getElementById('promo').innerHTML='<span>'+pr+pr+'</span><span>'+pr+pr+'</span>';
 </script>
 </body>
