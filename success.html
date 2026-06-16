@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Glow K Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FAF6EF;--paper:#fff;--green:#2E4733;--green-deep:#21341E;--ink:#23271F;--gold:#B88E3C;--pink:#D98FA0;--muted:#6F6A5B;--line:#E7DCC8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,.disp{font-family:'Archivo',sans-serif}
+  header{background:var(--cream);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:center;padding:18px 24px}
+  .logo{font-family:'Archivo';font-weight:900;font-size:1.35rem;letter-spacing:-.01em}
+  .logo .g,.logo .s{color:var(--green)} .logo .k{color:var(--pink)}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;max-width:540px;width:100%;text-align:center;padding:48px 36px;box-shadow:0 24px 50px -34px rgba(46,71,51,.5)}
+  .mark{width:62px;height:62px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+  .mark svg{width:30px;height:30px;color:var(--cream)}
+  .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  h1{font-weight:900;font-size:2rem;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:var(--green)}
+  p{color:var(--muted);max-width:42ch;margin:14px auto 0}
+  .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#231C0A;padding:13px 26px;border-radius:4px;font-family:'Archivo';font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--gold);transition:.2s;cursor:pointer}
+  .btn:hover{background:transparent;color:var(--green);border-color:var(--green)}
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--green)}
+  .btn.ghost:hover{border-color:var(--green)}
+  footer{text-align:center;padding:20px;font-size:.74rem;color:#9b9484}
+</style>
+</head>
+<body>
+<header><div class="nav">
+  <a href="index.html" class="logo"><span class="g">GLOW</span><span class="k">K</span><span class="s">SHOP</span></a>
+</div></header>
+
+<main>
+  <div class="card">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <div class="eyebrow">Order Confirmed</div>
+    <h1>Thank you for your glow</h1>
+    <p>Your order is in and your payment went through. A receipt is on its way to your email, and we'll pack your products with care. Free shipping, always.</p>
+    <div class="btns">
+      <a href="shop.html" class="btn">Keep Shopping</a>
+      <a href="index.html" class="btn ghost">Back Home</a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 Glow K Shop · glowkshop.com</footer>
+
+<script>
+  // Payment succeeded — empty the customer's bag so it doesn't linger.
+  try{ localStorage.removeItem('gks_cart'); }catch(e){}
+</script>
+</body>
+</html>
