@@ -163,7 +163,16 @@
   });
   function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');}
   function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
-  function checkout(){toast('Checkout is coming soon — payments are being set up');}
+  async function checkout(){
+    if(!cart.length){toast('Your bag is empty');return;}
+    toast('Taking you to secure checkout…');
+    try{
+      const res=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:cart.map(i=>({name:i.name,qty:i.qty}))})});
+      const data=await res.json();
+      if(res.ok&&data.url){window.location.href=data.url;}
+      else{toast(data.error||'Sorry, checkout could not start. Please try again.');}
+    }catch(e){toast('Could not reach checkout. Check your connection and try again.');}
+  }
   updateCart();
   let tm; function toast(m){const e=document.getElementById('t');e.textContent=m;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),2000);}
   const pr='KOREAN-INSPIRED NATURAL BEAUTY ✦ GLASS-SKIN GLOW ✦ NOURISHING BOTANICALS ✦ ';
