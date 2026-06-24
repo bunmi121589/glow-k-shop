@@ -157,9 +157,9 @@
 <script>
   const products=[
     {name:"Golden Smooth Hair Removal Cream",cat:"cream",con:["hair"],tag:"24K gold, gentle hair removal",gold:1},
-    {name:"24K Gold Radiance Glow Serum",cat:"cream",con:["firm","bright"],tag:"Gold + hyaluronic acid glow",gold:1},
-    {name:"Yeast & Collagen Smoothing Peel",cat:"cream",con:["firm"],tag:"Peel-off smoothing, egg-smooth look"},
-    {name:"Golden Bounce & Glow Serum",cat:"cream",con:["firm"],tag:"Gold + collagen, bounce-back skin",gold:1},
+    {name:"24K Gold Healing Glow Serum",cat:"cream",con:["firm","bright"],tag:"Gold + hyaluronic acid glow",gold:1},
+    {name:"Yeast Collagen Firming Peel",cat:"cream",con:["firm"],tag:"Peel-off firming, egg-smooth skin"},
+    {name:"Golden Firm & Lift Serum",cat:"cream",con:["firm"],tag:"Gold + collagen, bounce-back skin",gold:1},
     {name:"Blueberry Dew",cat:"mask",con:["hydrate"],tag:"Antioxidant berry hydration"},
     {name:"Shea Butter Glow",cat:"mask",con:["hydrate"],tag:"Rich nourishing moisture"},
     {name:"Orange Vitamin C Radiance",cat:"mask",con:["bright","wake"],tag:"Vitamin C brightening"},
@@ -174,15 +174,15 @@
     {name:"Oat Silk",cat:"mask",con:["soothe"],tag:"Soothing, silky oat comfort"},
     {name:"Green Nutrient Glow",cat:"mask",con:["bright"],tag:"Green veggie nutrients"},
     {name:"Hyaluronic Acid Deep Hydration",cat:"mask",con:["hydrate"],tag:"Deep HA moisture, bouncy skin"},
-    {name:"Snail Mucin Glow",cat:"mask",con:["firm","hydrate"],tag:"Snail mucin glow + bounce"},
-    {name:"Honey Replenish",cat:"mask",con:["hydrate","soothe"],tag:"Honey moisture replenish"},
+    {name:"Snail Mucin Repair",cat:"mask",con:["firm","hydrate"],tag:"Snail mucin repair + bounce"},
+    {name:"Honey Restore",cat:"mask",con:["hydrate","soothe"],tag:"Honey moisture restore"},
     {name:"Coffee Wake-Up Glow",cat:"mask",con:["wake"],tag:"Caffeine wake-up glow"},
     {name:"Kiwi Antioxidant Boost",cat:"mask",con:["bright","wake"],tag:"Vitamin-rich kiwi boost"},
     {name:"Cyan Lemon \u2013 Refresh & Brighten",cat:"mask",con:["bright","wake"],tag:"Citrus refresh + brighten"},
     {name:"Tomato \u2013 Bright and Even",cat:"mask",con:["bright"],tag:"Brightening, even tone"},
-    {name:"Grape \u2013 Bright & Bounce",cat:"mask",con:["bright","firm"],tag:"Antioxidant bright + bounce"},
+    {name:"Grape \u2013 Firm & Bright",cat:"mask",con:["bright","firm"],tag:"Antioxidant firm + bright"},
     {name:"Pomegranate \u2013 Antioxidant Glow",cat:"mask",con:["bright"],tag:"Pomegranate antioxidant glow"},
-    {name:"Golden Glow Ritual",cat:"mask",con:["firm","hydrate"],tag:"24K gold + HA radiance ritual",gold:1},
+    {name:"Golden Renewal Ritual",cat:"mask",con:["firm","hydrate"],tag:"24K gold + HA renewal ritual",gold:1},
     {name:"Goat Milk \u2013 Smooth & Bright",cat:"mask",con:["bright"],tag:"Lactic-acid smooth + bright"},
     {name:"Chamomile \u2013 Calm & Soothe",cat:"mask",con:["soothe"],tag:"Calming chamomile"},
     {name:"Carrot \u2013 Nourish & Glow",cat:"mask",con:["bright"],tag:"Beta-carotene nourish + glow"},
@@ -196,14 +196,14 @@
     {name:"Lavender \u2013 Calm & Hydrate",cat:"mask",con:["soothe","hydrate"],tag:"Calming lavender hydration"}
   ];
   const PRICE={cream:15,mask:10};
-  const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); const IMGMAP={"24k-gold-radiance-glow-serum":"24k-gold-healing-glow-serum","snail-mucin-glow":"snail-mucin-repair","golden-bounce-and-glow-serum":"golden-firm-and-lift-serum","yeast-and-collagen-smoothing-peel":"yeast-collagen-firming-peel","golden-glow-ritual":"golden-renewal-ritual","honey-replenish":"honey-restore","grape-bright-and-bounce":"grape-firm-and-bright"}; const imgslug=s=>{const k=slug(s);return IMGMAP[k]||k;};
   const grid=document.getElementById('grid');
 
   function render(f){
     grid.innerHTML='';
     const list=products.filter(p=>f==='all'||(p.con&&p.con.includes(f)));
     list.forEach(p=>{
-      const price=PRICE[p.cat], sg=slug(p.name);
+      const price=PRICE[p.cat], sg=imgslug(p.name);
       const c=document.createElement('div'); c.className='card '+p.cat;
       c.innerHTML=`<div class="imgwrap">${p.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="ph2">${p.name}</div></div>
       <div class="body"><h3>${p.name}</h3><div class="tag">${p.tag}</div><div class="row"><span class="price">$${price}</span><button class="add">Add</button></div></div>`;
@@ -233,7 +233,7 @@
     const items=document.getElementById('ditems'), sub=document.getElementById('subtotal');
     if(!items)return;
     if(!cart.length){items.innerHTML='<div class="diempty"><b>Your bag is empty</b>Add a little glow to get started.</div>';if(sub)sub.textContent='$0';return;}
-    items.innerHTML=cart.map(i=>`<div class="ditem" data-n="${encodeURIComponent(i.name)}"><div class="thumb"><img src="images/${slug(i.name)}.png" onerror="this.style.display='none'"></div><div class="info"><h4>${i.name}</h4><div class="p">$${i.price}</div><div class="qty"><button data-a="dec">−</button><span>${i.qty}</span><button data-a="inc">+</button></div></div><button class="rm" data-a="rm">Remove</button></div>`).join('');
+    items.innerHTML=cart.map(i=>`<div class="ditem" data-n="${encodeURIComponent(i.name)}"><div class="thumb"><img src="images/${imgslug(i.name)}.png" onerror="this.style.display='none'"></div><div class="info"><h4>${i.name}</h4><div class="p">$${i.price}</div><div class="qty"><button data-a="dec">−</button><span>${i.qty}</span><button data-a="inc">+</button></div></div><button class="rm" data-a="rm">Remove</button></div>`).join('');
     if(sub)sub.textContent='$'+cart.reduce((s,i)=>s+i.price*i.qty,0);
   }
   document.getElementById('ditems').addEventListener('click',e=>{
