@@ -288,9 +288,9 @@
   const PRICE={cream:15,mask:10};
   const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); const IMGMAP={"24k-gold-radiance-glow-serum":"24k-gold-healing-glow-serum","snail-mucin-glow":"snail-mucin-repair","golden-bounce-and-glow-serum":"golden-firm-and-lift-serum","yeast-and-collagen-smoothing-peel":"yeast-collagen-firming-peel","golden-glow-ritual":"golden-renewal-ritual","honey-replenish":"honey-restore","grape-bright-and-bounce":"grape-firm-and-bright"}; const imgslug=s=>{const k=slug(s);return IMGMAP[k]||k;};
   const featured=[
-    {name:"Golden Renewal Ritual",cat:"mask",tag:"24K gold + HA renewal ritual",gold:1},
-    {name:"24K Gold Healing Glow Serum",cat:"cream",tag:"Gold + hyaluronic acid glow",gold:1},
-    {name:"Snail Mucin Repair",cat:"mask",tag:"Snail mucin repair + bounce"},
+    {name:"Golden Glow Ritual",cat:"mask",tag:"24K gold + HA renewal ritual",gold:1},
+    {name:"24K Gold Radiance Glow Serum",cat:"cream",tag:"Gold + hyaluronic acid glow",gold:1},
+    {name:"Snail Mucin Glow",cat:"mask",tag:"Snail mucin repair + bounce"},
     {name:"Aloe Hydrate & Soothe",cat:"mask",tag:"Cooling aloe calm"}
   ];
   const feat=document.getElementById('feat');
