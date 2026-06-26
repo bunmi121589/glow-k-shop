@@ -288,9 +288,9 @@
   const PRICE={cream:15,mask:10};
   const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); const IMGMAP={"24k-gold-radiance-glow-serum":"24k-gold-healing-glow-serum","snail-mucin-glow":"snail-mucin-repair","golden-bounce-and-glow-serum":"golden-firm-and-lift-serum","yeast-and-collagen-smoothing-peel":"yeast-collagen-firming-peel","golden-glow-ritual":"golden-renewal-ritual","honey-replenish":"honey-restore","grape-bright-and-bounce":"grape-firm-and-bright"}; const imgslug=s=>{const k=slug(s);return IMGMAP[k]||k;};
   const featured=[
-    {name:"Golden Glow Ritual",cat:"mask",tag:"24K gold + HA renewal ritual",gold:1},
+    {name:"Golden Glow Ritual",cat:"mask",tag:"24K gold + HA radiance ritual",gold:1},
     {name:"24K Gold Radiance Glow Serum",cat:"cream",tag:"Gold + hyaluronic acid glow",gold:1},
-    {name:"Snail Mucin Glow",cat:"mask",tag:"Snail mucin repair + bounce"},
+    {name:"Snail Mucin Glow",cat:"mask",tag:"Snail mucin glow + bounce"},
     {name:"Aloe Hydrate & Soothe",cat:"mask",tag:"Cooling aloe calm"}
   ];
   const feat=document.getElementById('feat');
@@ -299,7 +299,9 @@
     const c=document.createElement('div'); c.className='card '+p.cat;
     c.innerHTML=`<div class="imgwrap">${p.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="ph2">${p.name}</div></div>
     <div class="body"><h3>${p.name}</h3><div class="tag">${p.tag}</div><div class="row"><span class="price">$${price}</span><button class="add">Add</button></div></div>`;
-    c.querySelector('.add').addEventListener('click',()=>addToCart(p.name,price));
+    c.style.cursor='pointer';
+    c.addEventListener('click',()=>{location.href='product.html?p='+slug(p.name);});
+    c.querySelector('.add').addEventListener('click',(e)=>{e.stopPropagation();addToCart(p.name,price);});
     feat.appendChild(c);
   });
 

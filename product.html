@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop — Glow K Shop</title>
+<title>Glow K Shop</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -94,6 +94,29 @@
   .dfoot .ship{font-size:.74rem;color:var(--muted);margin-bottom:14px}
   .dfoot .btn{width:100%}
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}nav.links{display:none}}
+
+  .pdp{padding:40px 0 36px}
+  .back{display:inline-block;font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+  .back:hover{color:var(--green)}
+  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .pdp-media{position:relative;aspect-ratio:1/1;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:linear-gradient(155deg,#EFE7D6,#E3DAC6)}
+  .pdp-media.cream{background:linear-gradient(155deg,#F4E6CC,#ECDBB9)}
+  .pdp-media img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+  .pdp-media .ph2{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:'Archivo';font-weight:800;font-size:1.4rem;color:var(--green);text-transform:uppercase;line-height:1.15}
+  .pdp-media .badge{position:absolute;top:14px;left:14px;z-index:3;background:var(--gold);color:#231C0A;font-family:'Archivo';font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:5px 10px;border-radius:3px}
+  .pdp-info .eyebrow{font-family:'Archivo';font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .pdp-info h1{font-family:'Archivo';font-weight:900;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.05;letter-spacing:-.01em;color:var(--green);margin-bottom:14px}
+  .pdp-price{font-family:'Archivo';font-weight:800;font-size:1.5rem;color:var(--ink);margin-bottom:22px}
+  .pdp-qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:6px;margin-bottom:16px}
+  .pdp-qty button{width:42px;height:42px;background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--green);line-height:1}
+  .pdp-qty span{min-width:40px;text-align:center;font-weight:700}
+  .pdp-add{width:100%;padding:16px;margin-bottom:14px}
+  .pdp-ship{font-size:.8rem;color:var(--muted);margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .pdp-desc{font-size:.98rem;line-height:1.65;color:var(--ink)}
+  .pdp-missing{text-align:center;padding:70px 20px}
+  .pdp-missing h2{font-family:'Archivo';color:var(--green);text-transform:uppercase;margin-bottom:10px}
+  .pdp-missing p{color:var(--muted);margin-bottom:20px}
+  @media(max-width:760px){.pdp-grid{grid-template-columns:1fr;gap:24px}}
 </style>
 </head>
 <body>
@@ -107,24 +130,7 @@
   </div>
 </div></header>
 
-<section class="pagehead">
-  <div class="eyebrow">Korean Beauty · Natural Botanicals</div>
-  <h1>Shop the glow</h1>
-  <p>Masks and serums for every skin concern — soft, dewy, glass-skin glow. Free shipping on every order.</p>
-</section>
-
-<section class="wrap shop">
-  <div class="filters">
-    <button class="active" data-f="all">All</button>
-    <button data-f="bright">Brightening</button>
-    <button data-f="hydrate">Hydrating</button>
-    <button data-f="soothe">Soothing &amp; Calm</button>
-    <button data-f="firm">Firm &amp; Renew</button>
-    <button data-f="wake">Wake-Up</button>
-    <button data-f="hair">Hair Removal</button>
-  </div>
-  <div class="grid" id="grid"></div>
-</section>
+<section class="wrap pdp" id="pdpRoot"></section>
 
 <section class="wrap news">
   <h3>Join the glow list</h3>
@@ -197,33 +203,35 @@
   ];
   const PRICE={cream:15,mask:10};
   const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); const IMGMAP={"24k-gold-radiance-glow-serum":"24k-gold-healing-glow-serum","snail-mucin-glow":"snail-mucin-repair","golden-bounce-and-glow-serum":"golden-firm-and-lift-serum","yeast-and-collagen-smoothing-peel":"yeast-collagen-firming-peel","golden-glow-ritual":"golden-renewal-ritual","honey-replenish":"honey-restore","grape-bright-and-bounce":"grape-firm-and-bright"}; const imgslug=s=>{const k=slug(s);return IMGMAP[k]||k;};
-  const grid=document.getElementById('grid');
-
-  function render(f){
-    grid.innerHTML='';
-    const list=products.filter(p=>f==='all'||(p.con&&p.con.includes(f)));
-    list.forEach(p=>{
-      const price=PRICE[p.cat], sg=imgslug(p.name);
-      const c=document.createElement('div'); c.className='card '+p.cat;
-      c.innerHTML=`<div class="imgwrap">${p.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="ph2">${p.name}</div></div>
-      <div class="body"><h3>${p.name}</h3><div class="tag">${p.tag}</div><div class="row"><span class="price">$${price}</span><button class="add">Add</button></div></div>`;
-      c.style.cursor='pointer';
-      c.addEventListener('click',()=>{location.href='product.html?p='+slug(p.name);});
-      c.querySelector('.add').addEventListener('click',(e)=>{e.stopPropagation();addToCart(p.name,price);});
-      grid.appendChild(c);
-    });
+  const DESC={"golden-smooth-hair-removal-cream": "Reveal touchably smooth skin with this gentle gold-infused hair removal cream, formulated for an easy, fuss-free finish that leaves skin looking soft and feeling silky. Smooth, simple, golden.","24k-gold-radiance-glow-serum": "Unlock a lit-from-within glow with this luxe facial serum, infused with 24K gold and hyaluronic acid to leave skin looking luminous, smooth, and dewy. Your daily dose of glass-skin radiance.","yeast-and-collagen-smoothing-peel": "Reveal fresh, glowing skin with this gentle peel-off treatment, powered by yeast extract and collagen to leave your complexion looking soft, smooth, and egg-silky. The satisfying self-care step your routine's been missing.","golden-bounce-and-glow-serum": "Bring the bounce back with this rich facial serum, blended with 24K gold and collagen for skin that looks plump, supple, and radiant. A little luxury for your glass-skin ritual.","blueberry-dew": "Drench your skin in juicy hydration with this antioxidant-rich sheet mask, powered by blueberry extract to leave skin looking plump, fresh, and dewy. Your daily glass-skin reset.","shea-butter-glow": "Wrap your skin in rich, buttery moisture with this nourishing sheet mask, powered by shea butter to leave your complexion looking soft, supple, and glowing. Comfort and glow in one.","orange-vitamin-c-radiance": "Wake up dull-looking skin with this vitamin C sheet mask, bursting with orange extract to leave your complexion looking bright, fresh, and radiant. Your daily hit of glow.","strawberry-quench": "Quench thirsty skin with this juicy strawberry sheet mask, packed with berry-fresh moisture to leave skin looking plump, soft, and dewy. Sweet, fresh, glowing.","apple-hydra-fresh": "Refresh your skin with this crisp apple sheet mask, infused with hydrating apple extract to leave your complexion looking fresh, bouncy, and dewy. A clean, juicy reset.","tea-tree-fresh-radiance": "Refresh and rebalance with this clarifying tea tree sheet mask, infused with tea tree extract to leave skin looking fresh, balanced, and glowing. A purifying moment for your routine.","mango-nourish": "Nourish your skin with this tropical mango sheet mask, rich in mango extract to leave your complexion looking soft, radiant, and glowing. A juicy escape for thirsty skin.","aloe-hydrate-and-soothe": "Cool and comfort your skin with this soothing aloe sheet mask, infused with aloe vera to leave skin feeling calm, hydrated, and refreshed. Like a cool drink of water for your face.","cactus-hydra-plump": "Drench skin in desert-deep hydration with this cactus sheet mask, powered by cactus extract to leave your complexion looking plump, bouncy, and dewy. Thirst-quenching glass-skin glow.","cherry-antioxidant-glow": "Glow with this antioxidant-rich cherry sheet mask, bursting with cherry extract to leave skin looking bright, fresh, and radiant. Sweet, juicy, glowing skin.","lemon-vitality-glow": "Brighten dull-looking skin with this zesty lemon sheet mask, bursting with vitamin-rich lemon extract to leave your complexion looking fresh, bright, and radiant. An energizing glow boost.","oat-silk": "Comfort your skin with this gentle oat sheet mask, infused with soothing oat extract to leave skin feeling soft, calm, and silky-smooth. Quiet comfort for sensitive-feeling days.","green-nutrient-glow": "Feed your skin with this nutrient-packed green sheet mask, blended with leafy green extracts to leave your complexion looking fresh, healthy, and glowing. Your daily green reset.","hyaluronic-acid-deep-hydration": "Flood thirsty skin with moisture using this hyaluronic acid sheet mask, formulated to leave your complexion looking plump, bouncy, and dewy. Deep hydration for that glass-skin glow.","snail-mucin-glow": "Glow up with this nourishing snail mucin sheet mask, powered by snail mucin extract to leave skin looking smooth, bouncy, and luminous. The K-beauty cult favorite, bottled into a mask.","honey-replenish": "Drench your skin in sweet, replenishing moisture with this honey sheet mask, infused with honey extract to leave your complexion looking soft, supple, and dewy. Golden, glowing comfort.","coffee-wake-up-glow": "Wake up tired-looking skin with this energizing coffee sheet mask, infused with caffeine to leave your complexion looking fresh, awake, and radiant. Your morning glow, brewed.","kiwi-antioxidant-boost": "Boost your glow with this antioxidant-rich kiwi sheet mask, bursting with vitamin-packed kiwi extract to leave skin looking fresh, bright, and dewy. A juicy shot of radiance.","cyan-lemon-refresh-and-brighten": "Refresh and brighten with this zesty lemon sheet mask, infused with citrus extract to leave your complexion looking fresh, bright, and glowing. A cool, clean burst of glow.","tomato-bright-and-even": "Even out dull-looking skin with this brightening tomato sheet mask, rich in tomato extract to leave your complexion looking fresh, bright, and radiant. For a smoother-looking, glowing finish.","grape-bright-and-bounce": "Bring the bounce with this antioxidant-rich grape sheet mask, bursting with grape extract to leave skin looking plump, bright, and dewy. Juicy glow in every sheet.","pomegranate-antioxidant-glow": "Glow with this antioxidant-rich pomegranate sheet mask, packed with pomegranate extract to leave your complexion looking fresh, radiant, and dewy. Ruby-rich glow for your routine.","golden-glow-ritual": "Indulge your skin with this luxe golden sheet mask, infused with 24K gold and hyaluronic acid to leave your complexion looking luminous, smooth, and dewy. A glass-skin ritual worth savoring.","goat-milk-smooth-and-bright": "Soften your skin with this nourishing goat milk sheet mask, powered by lactic acid–rich goat milk to leave your complexion looking smooth, bright, and glowing. Creamy comfort, luminous finish.","chamomile-calm-and-soothe": "Calm your skin with this gentle chamomile sheet mask, infused with soothing chamomile extract to leave skin feeling soft, comforted, and refreshed. A quiet, calming moment for your face.","carrot-nourish-and-glow": "Nourish dull-looking skin with this vitamin-rich carrot sheet mask, packed with carrot extract to leave your complexion looking fresh, healthy, and glowing. Rooted in radiance.","bamboo-hydrate-and-bounce": "Drench skin in fresh hydration with this bamboo sheet mask, infused with bamboo extract to leave your complexion looking plump, bouncy, and dewy. Cool, clean, glass-skin glow.","cucumber-cool-and-hydrate": "Cool, calm, refresh with this soothing cucumber sheet mask, powered by cucumber extract to leave skin looking hydrated, balanced, and softly glowing. A crisp, cooling reset.","rose-dewy-glow": "Bloom into a soft, dewy glow with this rose sheet mask, infused with rose extract to leave your complexion looking radiant, fresh, and luminous. Romance for your routine.","avocado-vitamin-e-glow": "Nourish your skin with this rich avocado sheet mask, packed with vitamin E–rich avocado extract to leave your complexion looking soft, supple, and glowing. Buttery-smooth, dewy comfort.","green-tea-smooth-and-soothe": "Refresh and comfort your skin with this antioxidant-rich green tea sheet mask, infused with green tea extract to leave skin feeling calm, smooth, and refreshed. A soothing sip for your skin.","pink-peach-soft-glow": "Glow soft and sweet with this juicy peach sheet mask, infused with peach extract to leave your complexion looking fresh, dewy, and radiant. Soft, peachy, glowing skin.","coconut-deep-hydrate-smooth-and-soften": "Drench your skin in tropical moisture with this coconut sheet mask, rich in coconut extract to leave skin looking soft, smooth, and dewy. Deep hydration with a glowing finish.","lavender-calm-and-hydrate": "Unwind your skin with this calming lavender sheet mask, infused with lavender extract to leave skin feeling soft, soothed, and hydrated. A relaxing ritual for your glass-skin glow."};
+  function getParam(k){return new URLSearchParams(location.search).get(k);}
+  const psl=getParam('p');
+  const product=products.find(p=>slug(p.name)===psl);
+  const root=document.getElementById('pdpRoot');
+  if(!product){
+    root.innerHTML='<div class="pdp-missing"><h2>Product not found</h2><p>That product may have moved. Browse the full collection instead.</p><a class="btn dark" href="shop.html">Shop all</a></div>';
+  }else{
+    const price=PRICE[product.cat], sg=imgslug(product.name);
+    document.title=product.name+' — Glow K Shop';
+    const d=DESC[slug(product.name)]||'';
+    const kind=product.cat==='cream'?'Serum & Cream':'Sheet Mask';
+    root.innerHTML=`<a class="back" href="shop.html">← Back to shop</a>
+      <div class="pdp-grid">
+        <div class="pdp-media ${product.cat}">${product.gold?'<span class="badge">24K Gold</span>':''}<img src="images/${sg}.png" alt="${product.name}" onerror="this.style.display='none'"><div class="ph2">${product.name}</div></div>
+        <div class="pdp-info">
+          <div class="eyebrow">${kind}</div>
+          <h1>${product.name}</h1>
+          <div class="pdp-price">$${price}</div>
+          <div class="pdp-qty"><button data-a="dec" aria-label="Decrease">−</button><span id="pq">1</span><button data-a="inc" aria-label="Increase">+</button></div>
+          <button class="btn dark pdp-add">Add to bag</button>
+          <div class="pdp-ship">Free shipping on every order · Shipped from the US</div>
+          <div class="pdp-desc">${d}</div>
+        </div>
+      </div>`;
+    let q=1; const qEl=document.getElementById('pq');
+    root.querySelector('.pdp-qty').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;if(b.dataset.a==='inc')q++;else if(b.dataset.a==='dec'&&q>1)q--;qEl.textContent=q;});
+    root.querySelector('.pdp-add').addEventListener('click',()=>{for(let i=0;i<q;i++)addToCart(product.name,price);openCart();});
   }
-  const fbtns=document.querySelectorAll('.filters button');
-  fbtns.forEach(b=>b.addEventListener('click',()=>{
-    fbtns.forEach(x=>x.classList.remove('active'));
-    b.classList.add('active'); render(b.dataset.f);
-    history.replaceState(null,'',b.dataset.f==='all'?'shop.html':'#'+b.dataset.f);
-  }));
-  // pre-filter from a landing-page tile link like shop.html#bright
-  const h=(location.hash||'').replace('#','');
-  const start=[...fbtns].find(b=>b.dataset.f===h);
-  if(start){fbtns.forEach(x=>x.classList.remove('active'));start.classList.add('active');render(h);}
-  else render('all');
 
   /* ---- Cart (shared) ---- */
   let cart=[]; try{cart=JSON.parse(localStorage.getItem('gks_cart'))||[]}catch(e){cart=[]}
